@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>커뮤니티 - Sminside</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .community-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        /* 카테고리 필터 스타일 */
+        .category-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+        }
+
+        .category-tab {
+            padding: 0.5rem 1rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            color: var(--text-sub);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+
+        .category-tab.active {
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        /* 게시판 테이블 스타일 */
+        .board-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .board-table th, .board-table td {
+            padding: 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .board-table th {
+            color: var(--text-sub);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .board-table tr {
+            transition: 0.2s;
+        }
+
+        .board-table tr:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        /* 뱃지 스타일: 너무 튀지 않는 색상 사용 */
+        .badge {
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-right: 0.5rem;
+        }
+        .badge-free { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
+        .badge-qa { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
+        .badge-info { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+        .badge-school { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
+
+        .post-title {
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .post-title:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">Sminside</a>
+        <ul class="nav-links">
+            <li><a href="index.html">홈</a></li>
+            <li><a href="schools.html">학교 소개</a></li>
+            <li><a href="community.html" style="color: var(--accent-color);">커뮤니티</a></li>
+            <li><a href="login.html">로그인</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="community-header">
+            <h1>커뮤니티 게시판</h1>
+            <a href="write.html" class="btn">글쓰기</a>
+        </div>
+
+        <!-- 카테고리 탭: 주제별로 글을 나눠서 볼 수 있게 함 -->
+        <div class="category-tabs">
+            <div class="category-tab active">전체</div>
+            <div class="category-tab">자유</div>
+            <div class="category-tab">질문</div>
+            <div class="category-tab">정보공유</div>
+            <div class="category-tab">학교별</div>
+        </div>
+
+        <!-- 게시판 목록: 테이블 태그를 사용해서 깔끔하게 정렬함 -->
+        <div class="glass-card" style="padding: 0;">
+            <table class="board-table">
+                <thead>
+                    <tr>
+                        <th style="width: 80px;">번호</th>
+                        <th>제목</th>
+                        <th style="width: 120px;">작성자</th>
+                        <th style="width: 120px;">학교</th>
+                        <th style="width: 100px;">날짜</th>
+                        <th style="width: 80px;">조회수</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>12</td>
+                        <td>
+                            <a href="post.html" class="post-title">
+                                <span class="badge badge-free">자유</span>
+                                안녕하세요 대덕입니다! 반가워요
+                            </a>
+                        </td>
+                        <td>김예준</td>
+                        <td>대덕</td>
+                        <td>05.20</td>
+                        <td>42</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>
+                            <a href="post.html" class="post-title">
+                                <span class="badge badge-qa">질문</span>
+                                파이썬 공부 어떻게들 하시나요? 꿀팁 공유점
+                            </a>
+                        </td>
+                        <td>최지민</td>
+                        <td>용인</td>
+                        <td>05.19</td>
+                        <td>128</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>
+                            <a href="post.html" class="post-title">
+                                <span class="badge badge-info">정보</span>
+                                이번에 새로 나온 프레임워크 써보신 분?
+                            </a>
+                        </td>
+                        <td>박서준</td>
+                        <td>광주</td>
+                        <td>05.18</td>
+                        <td>56</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>
+                            <a href="post.html" class="post-title">
+                                <span class="badge badge-school">학교</span>
+                                우리 학교 급식 오늘 레전드네요
+                            </a>
+                        </td>
+                        <td>이현우</td>
+                        <td>부산</td>
+                        <td>05.18</td>
+                        <td>210</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Sminside. 제작자: 김예준 (대덕SW마고)</p>
+    </footer>
+
+</body>
+</html>

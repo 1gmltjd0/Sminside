@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지 - Sminside</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--accent-color), #a855f7);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+        }
+
+        .profile-info h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-info p {
+            color: var(--text-sub);
+            margin-bottom: 1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+        }
+
+        .my-posts-header {
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1rem;
+        }
+
+        .post-link {
+            display: block;
+            padding: 1.2rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            transition: 0.3s;
+        }
+
+        .post-link:hover {
+            background: var(--card-hover);
+            transform: translateX(10px);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">Sminside</a>
+        <ul class="nav-links">
+            <li><a href="index.html">홈</a></li>
+            <li><a href="schools.html">학교 소개</a></li>
+            <li><a href="community.html">커뮤니티</a></li>
+            <li><a href="mypage.html" style="color: var(--accent-color);">마이페이지</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- 프로필 섹션: 사용자의 기본 정보를 보여줌 -->
+        <header class="glass-card profile-section">
+            <div class="profile-img">👤</div>
+            <div class="profile-info">
+                <h2>김예준 <span style="font-size: 1rem; color: var(--text-sub); font-weight: 400;">(대덕SW마고)</span></h2>
+                <p>안녕하세요! 백엔드 개발자를 꿈꾸는 1학년 김예준입니다. 열심히 공부 중이에요!</p>
+                <button class="btn" style="padding: 0.5rem 1rem; font-size: 0.85rem;">정보 수정</button>
+            </div>
+        </header>
+
+        <!-- 활동 통계: 내가 쓴 글과 댓글 수를 시각적으로 보여줌 -->
+        <div class="stats-grid">
+            <div class="glass-card stat-card">
+                <div class="stat-value">12</div>
+                <div class="stat-label">작성한 글</div>
+            </div>
+            <div class="glass-card stat-card">
+                <div class="stat-value">8</div>
+                <div class="stat-label">작성한 댓글</div>
+            </div>
+        </div>
+
+        <!-- 내가 쓴 게시글 목록: 클릭하면 해당 글로 이동할 수 있게 함 -->
+        <section>
+            <div class="my-posts-header">
+                <h3>내가 쓴 게시글</h3>
+            </div>
+            
+            <a href="#" class="post-link">
+                <div style="font-size: 0.8rem; color: var(--accent-color); margin-bottom: 0.5rem;">자유 게시판</div>
+                <div style="font-weight: 600;">안녕하세요 대덕입니다! 반가워요</div>
+                <div style="font-size: 0.8rem; color: var(--text-sub); margin-top: 0.5rem;">2026.05.20</div>
+            </a>
+
+            <a href="#" class="post-link">
+                <div style="font-size: 0.8rem; color: var(--accent-color); margin-bottom: 0.5rem;">질문 게시판</div>
+                <div style="font-weight: 600;">HTML이랑 CSS 너무 어려워요ㅠㅠ</div>
+                <div style="font-size: 0.8rem; color: var(--text-sub); margin-top: 0.5rem;">2026.05.15</div>
+            </a>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Sminside. 제작자: 김예준 (대덕SW마고)</p>
+    </footer>
+
+</body>
+</html>

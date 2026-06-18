@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sminside - SW마이스터고 커뮤니티</title>
+    <!-- 외부 스타일 시트 연결 -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* index.html 전용 스타일 */
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-sub);
+            margin-bottom: 2rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .recent-posts {
+            margin-top: 4rem;
+        }
+
+        .post-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom: 1px solid var(--glass-border);
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .post-item:last-child {
+            border-bottom: none;
+        }
+
+        .post-item span {
+            color: var(--text-sub);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 상단 메뉴 바 -->
+    <nav>
+        <a href="index.html" class="logo">Sminside</a>
+        <ul class="nav-links">
+            <li><a href="index.html">홈</a></li>
+            <li><a href="schools.html">학교 소개</a></li>
+            <li><a href="community.html">커뮤니티</a></li>
+            <li><a href="login.html">로그인</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- 메인 히어로 섹션: 사이트의 첫 인상을 결정하는 곳 -->
+        <header class="hero">
+            <h1>전국 SW마이스터고의 중심</h1>
+            <p>우리는 코드로 세상을 바꾸는 학생들의 공간입니다.</p>
+            <a href="schools.html" class="btn">시작하기</a>
+        </header>
+
+        <!-- 주요 기능 소개 카드 섹션 -->
+        <section class="features">
+            <div class="glass-card">
+                <h3>학교 소개</h3>
+                <p style="color: var(--text-sub); margin: 1rem 0;">전국의 4개 소프트웨어 마이스터고등학교 정보를 한눈에 확인하세요.</p>
+                <a href="schools.html" style="color: var(--accent-color); text-decoration: none; font-weight: 600;">자세히 보기 &rarr;</a>
+            </div>
+            <div class="glass-card">
+                <h3>학생 커뮤니티</h3>
+                <p style="color: var(--text-sub); margin: 1rem 0;">다른 학교 학생들과 고민을 나누고 프로젝트 팀원을 찾아보세요.</p>
+                <a href="community.html" style="color: var(--accent-color); text-decoration: none; font-weight: 600;">자세히 보기 &rarr;</a>
+            </div>
+            <div class="glass-card">
+                <h3>마이페이지</h3>
+                <p style="color: var(--text-sub); margin: 1rem 0;">내 프로필을 관리하고 내가 작성한 게시글을 모아볼 수 있습니다.</p>
+                <a href="mypage.html" style="color: var(--accent-color); text-decoration: none; font-weight: 600;">자세히 보기 &rarr;</a>
+            </div>
+        </section>
+
+        <!-- 최근 게시글 미리보기: 사용자가 궁금해할 만한 최신 글들 -->
+        <section class="recent-posts glass-card">
+            <h2 style="margin-bottom: 1.5rem;">📌 최근 게시글</h2>
+            <div class="post-list">
+                <a href="#" class="post-item">
+                    <p>안녕하세요 대덕입니다! 반가워요</p>
+                    <span>05.20</span>
+                </a>
+                <a href="#" class="post-item">
+                    <p>파이썬 공부 어떻게들 하시나요? 꿀팁 공유점</p>
+                    <span>05.19</span>
+                </a>
+                <a href="#" class="post-item">
+                    <p>이번에 새로 나온 프레임워크 써보신 분?</p>
+                    <span>05.18</span>
+                </a>
+                <a href="#" class="post-item">
+                    <p>HTML이랑 CSS 너무 어려워요ㅠㅠ</p>
+                    <span>05.18</span>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- 하단 정보 영역 -->
+    <footer>
+        <p>&copy; 2026 Sminside. 제작자: 김예준 (대덕SW마고)</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,222 @@
+/* 
+  ==========================================================================
+  Sminside Premium Glassmorphism UI Framework
+  ==========================================================================
+  
+  [Presentation Note: Design Architecture]
+  본 스타일시트는 현대적인 웹 디자인의 정수인 '글래스모피즘(Glassmorphism)'을 
+  엔지니어링 관점에서 구현했습니다. 주요 기술적 특징은 다음과 같습니다:
+  
+  1. Layered Alpha Transparency: rgba 값을 조절하여 겹쳐진 레이어 간의 시각적 분리 제공.
+  2. Backdrop Filter (Blur): 하위 요소의 가우시안 블러 처리를 통한 투명 유리 질감 구현.
+  3. Responsive Grid System: 가변적인 학교 카드 및 피드 배치를 위한 CSS Grid 사용.
+  4. Dynamic Motion Engine: 사용자 경험(UX) 향상을 위한 CSS Transition 및 Animation 최적화.
+*/
+
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+
+:root {
+    /* [Core Palette] 깊이감 있는 우주 컨셉의 다크 모드 색상 체계 */
+    --bg-base: #03060d;           /* 배경 기본색: 심해의 어둠 (Eye-comfort 최적화) */
+    --accent-indigo: #818cf8;     /* 메인 브랜드 컬러: 인디고 (신뢰감 부여) */
+    --accent-violet: #a78bfa;     /* 서브 브랜드 컬러: 바이올렛 (창의성 강조) */
+    --accent-emerald: #34d399;    /* 강조 컬러: 에메랄드 (긍정적 상호작용) */
+    --accent-rose: #fb7185;       /* 강조 컬러: 로즈 (알림 및 중요 포인트) */
+    
+    /* [Glass Engine] 유리 질감을 위한 투명도 및 블러 파라미터 */
+    --glass-bg: rgba(255, 255, 255, 0.04);       /* 4% 투명도의 화이트 베이스 */
+    --glass-border: rgba(255, 255, 255, 0.12);   /* 테두리 강조를 통한 외곽선 정의 */
+    --glass-glow: rgba(129, 140, 248, 0.15);     /* 카드 내부의 미세한 인디고 발광 효과 */
+    
+    /* [Typography] 가독성(Readability) 확보를 위한 텍스트 위계(Hierarchy) */
+    --text-high: #f8fafc;         /* Primary: 제목 및 핵심 정보 (명도 98%) */
+    --text-mid: #94a3b8;          /* Secondary: 본문 및 설명 (명도 70%) */
+    --text-low: #64748b;          /* Tertiary: 날짜, 작성자 등 메타 정보 (명도 50%) */
+}
+
+/* --- [Base Normalization] 기본 스타일 초기화 --- */
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased; /* 글꼴 렌더링 최적화 */
+}
+
+body {
+    background: var(--bg-base);
+    color: var(--text-high);
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* 커스텀 스크롤바: 디자인 일관성을 위해 기본 스크롤바 숨김 처리 및 재정의 */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { 
+    background: var(--glass-border); 
+    border-radius: 10px; 
+    transition: 0.3s;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--text-low); }
+
+/* --- [Visual Effects Engine] 배경 및 모션 엔진 --- */
+
+/* 네뷸라(성운) 배경: 동적이고 다채로운 시각적 효과 제공 */
+.nebula-container {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
+    overflow: hidden; pointer-events: none; /* 클릭 이벤트 방해 방지 */
+}
+
+.nebula {
+    position: absolute; width: 1000px; height: 1000px; border-radius: 50%;
+    filter: blur(150px); opacity: 0.18; transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.n1 { background: var(--accent-indigo); top: -300px; left: -300px; }
+.n2 { background: var(--accent-violet); bottom: -300px; right: -300px; }
+.n3 { background: var(--accent-emerald); top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.08; }
+
+/* 별빛 배경 엔진: script.js에서 동적 생성된 요소들이 위치함 */
+.stars-canvas {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+/* --- [Components Library] 공용 UI 컴포넌트 --- */
+
+/* 내비게이션: 지능형 투명도 조절 시스템 */
+nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.4rem 10%; position: sticky; top: 0; z-index: 1000;
+    background: rgba(3, 6, 13, 0.2); backdrop-filter: blur(0px);
+    border-bottom: 1px solid transparent;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* 스크롤 시 활성화되는 전문적 스타일 */
+nav.scrolled {
+    padding: 1rem 10%;
+    background: rgba(3, 6, 13, 0.7);
+    backdrop-filter: blur(30px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.logo {
+    font-size: 1.8rem; font-weight: 900; letter-spacing: -2px;
+    background: linear-gradient(135deg, #fff 0%, var(--accent-indigo) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    cursor: pointer; transition: 0.3s;
+}
+
+.nav-links { list-style: none; display: flex; gap: 2.5rem; }
+.nav-links li {
+    font-size: 0.9rem; color: var(--text-mid); cursor: pointer;
+    font-weight: 600; transition: 0.3s ease;
+}
+.nav-links li:hover, .nav-links li.active { color: #fff; transform: translateY(-2px); }
+
+/* 프리미엄 글래스 카드: 모든 콘텐츠의 기본 컨테이너 */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--glass-border);
+    border-radius: 28px;
+    padding: 2.5rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 0 24px var(--glass-glow);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.glass-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.6);
+}
+
+/* 인터랙티브 버튼 */
+.btn {
+    padding: 0.9rem 2rem; border-radius: 16px; border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.08); color: #fff; font-weight: 700;
+    cursor: pointer; transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    display: inline-flex; align-items: center; justify-content: center;
+    text-decoration: none;
+}
+
+.btn-primary { 
+    background: linear-gradient(135deg, var(--accent-indigo), var(--accent-violet));
+    border: none;
+}
+
+.btn:hover { 
+    transform: translateY(-3px) scale(1.02); 
+    background: rgba(255, 255, 255, 0.15); 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* 게시글 피드 아이템 호버 효과 */
+.post-row-hover { transition: 0.4s ease; cursor: pointer; }
+.post-row-hover:hover {
+    background: rgba(255, 255, 255, 0.06) !important;
+    padding-left: 3rem !important;
+}
+
+/* --- [Layout Engine] 섹션 및 그리드 제어 --- */
+.container { max-width: 1200px; margin: 0 auto; padding: 5rem 2rem; }
+
+section { display: none; }
+section.active { display: block; animation: entrance 1s cubic-bezier(0.16, 1, 0.3, 1); }
+
+/* 섹션 전환 시 부드러운 리빌 애니메이션 */
+@keyframes entrance {
+    0% { opacity: 0; transform: translateY(30px); filter: blur(15px); }
+    100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+/* 기업 카드 배치를 위한 반응형 그리드 */
+.company-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2.5rem; }
+
+/* --- [Utility Classes] 기타 도우미 스타일 --- */
+.company-tag {
+    display: inline-block; padding: 0.3rem 0.8rem; border-radius: 8px;
+    font-size: 0.7rem; font-weight: 800; background: rgba(129, 140, 248, 0.15);
+    color: var(--accent-indigo); border: 1px solid rgba(129, 140, 248, 0.2);
+}
+
+/* 폼 요소 포커스 최적화 */
+input, textarea, select {
+    outline: none; transition: 0.3s;
+    width: 100%; padding: 1rem; border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border);
+    color: #fff;
+}
+input:focus, textarea:focus {
+    border-color: var(--accent-indigo);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* 메시지/알림 잠금 화면 스타일 */
+.lock-overlay {
+    text-align: center; padding: 5rem;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+
+/* 모달 시스템 */
+.modal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(3, 6, 13, 0.85); backdrop-filter: blur(25px);
+    display: none; justify-content: center; align-items: center; z-index: 2000;
+}
+.modal-content {
+    width: 90%; max-width: 700px; padding: 3.5rem;
+    animation: modalPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalPop {
+    from { transform: scale(0.9) translateY(40px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
+}

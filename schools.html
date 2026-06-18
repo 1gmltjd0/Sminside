@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학교 소개 - Sminside</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .filter-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 0.5rem 1.2rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            color: var(--text-sub);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .tab.active {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+
+        .school-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .school-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .info-item {
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+            color: var(--text-sub);
+        }
+
+        .description {
+            margin: 1rem 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">Sminside</a>
+        <ul class="nav-links">
+            <li><a href="index.html">홈</a></li>
+            <li><a href="schools.html" style="color: var(--accent-color);">학교 소개</a></li>
+            <li><a href="community.html">커뮤니티</a></li>
+            <li><a href="login.html">로그인</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <header style="margin-bottom: 3rem;">
+            <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">전국 SW마이스터고 소개</h1>
+            <p style="color: var(--text-sub);">대한민국의 소프트웨어 산업을 이끌어갈 4개의 특수목적 고등학교입니다.</p>
+        </header>
+
+        <!-- 지역별 필터 탭: 클릭하면 해당 지역의 학교만 보여주는 기능을 생각하며 만듦 -->
+        <div class="filter-tabs">
+            <div class="tab active">전체</div>
+            <div class="tab">충청</div>
+            <div class="tab">경상</div>
+            <div class="tab">전라</div>
+            <div class="tab">수도권(준비중)</div>
+        </div>
+
+        <div class="school-grid">
+            <!-- 대덕 소프트웨어 마이스터고등학교 -->
+            <div class="glass-card school-card">
+                <h3>대덕 SW마이스터고</h3>
+                <div class="info-item">📍 대전광역시 유성구</div>
+                <div class="info-item">📅 2015년 개교 (제 1호)</div>
+                <p class="description">우리나라 최초의 소프트웨어 마이스터고등학교로, 깊은 역사와 전통을 자랑합니다.</p>
+                <a href="https://dsmhs.djsch.kr" target="_blank" class="btn" style="width: 100%; text-align: center;">홈페이지 방문</a>
+            </div>
+
+            <!-- 대구 소프트웨어 마이스터고등학교 -->
+            <div class="glass-card school-card">
+                <h3>대구 SW마이스터고</h3>
+                <div class="info-item">📍 대구광역시 달성군</div>
+                <div class="info-item">📅 2016년 개교</div>
+                <p class="description">창의적이고 도전적인 소프트웨어 개발자를 양성하는 영남권의 중심 학교입니다.</p>
+                <a href="https://dgsw.dge.hs.kr" target="_blank" class="btn" style="width: 100%; text-align: center;">홈페이지 방문</a>
+            </div>
+
+            <!-- 광주 소프트웨어 마이스터고등학교 -->
+            <div class="glass-card school-card">
+                <h3>광주 SW마이스터고</h3>
+                <div class="info-item">📍 광주광역시 광산구</div>
+                <div class="info-item">📅 2017년 개교</div>
+                <p class="description">실무 중심의 교육을 통해 산업체가 필요로 하는 최고의 인재를 키워냅니다.</p>
+                <a href="http://gsm.gen.hs.kr" target="_blank" class="btn" style="width: 100%; text-align: center;">홈페이지 방문</a>
+            </div>
+
+            <!-- 부산 소프트웨어 마이스터고등학교 -->
+            <div class="glass-card school-card">
+                <h3>부산 SW마이스터고</h3>
+                <div class="info-item">📍 부산광역시 강서구</div>
+                <div class="info-item">📅 2021년 개교</div>
+                <p class="description">최신 트렌드에 발맞춘 커리큘럼으로 미래를 선도하는 개발자를 양성합니다.</p>
+                <a href="https://bssw.pen.hs.kr" target="_blank" class="btn" style="width: 100%; text-align: center;">홈페이지 방문</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Sminside. 제작자: 김예준 (대덕SW마고)</p>
+    </footer>
+
+</body>
+</html>

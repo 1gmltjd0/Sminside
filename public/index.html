@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sminside - SW마이스터고 통합 플랫폼</title>
+    
+    <!-- [Engine: CSS] 
+         디자인 시스템과 글래스모피즘 코어 엔진을 로드합니다. 
+         발표 포인트: 변수를 활용한 중앙 집중식 색상 관리 (Root Variables)
+    -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- [Visual Engine] 
+         레이어링된 배경 엔진: z-index를 이용해 성운과 별빛을 분리 배치하여 깊이감 형성 
+    -->
+    <div class="nebula-container">
+        <div class="nebula n1"></div>
+        <div class="nebula n2"></div>
+        <div class="nebula n3"></div>
+    </div>
+    <div class="stars-canvas" id="stars"></div>
+
+    <!-- [Nav Engine] 
+         내비게이션 시스템: id="navbar"를 통해 스크롤 상태에 따른 동적 클래스 토글링 수행 
+    -->
+    <nav id="navbar">
+        <div class="logo" onclick="showSection('home')">Sminside</div>
+        <ul class="nav-links">
+            <li id="li-home" onclick="showSection('home')" class="active">홈</li>
+            <li id="li-schools" onclick="showSection('schools')">학교</li>
+            <li id="li-community" onclick="showSection('community')">통합피드</li>
+            <li id="li-companies" onclick="showSection('companies')">기업매칭</li>
+            <li id="li-messages" onclick="showSection('messages')">메시지</li>
+            <li id="nav-login" onclick="showSection('login')">로그인</li>
+            <li id="nav-mypage" style="display:none;" onclick="showSection('mypage')">내 정보</li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- [Section: Home] 
+             브랜드 아이덴티티를 전달하는 메인 랜딩 섹션
+        -->
+        <section id="home" class="active">
+            <div style="text-align: center; padding: 120px 0;">
+                <h1 style="font-size: 4.5rem; margin-bottom: 1.5rem; font-weight: 900; letter-spacing: -3px;">Sminside.</h1>
+                <p style="color: var(--text-mid); margin-bottom: 3.5rem; font-size: 1.3rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.5;">SW마이스터고 우리들의 <br>진짜 이야기가 시작되는 곳</p>
+                <div style="display: flex; gap: 1.5rem; justify-content: center;">
+                    <button class="btn btn-primary" onclick="showSection('community')">통합 피드 입장</button>
+                    <button class="btn" onclick="showSection('schools')">학교별 공간 탐색</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- [Section: Schools] 
+             각 학교별 전용 페이지로 라우팅되는 엔트리 포인트
+        -->
+        <section id="schools">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">마이스터의 요람</h2>
+                <p style="color: var(--text-mid);">각 학교를 클릭하여 전용 커뮤니티에 입장하세요.</p>
+            </div>
+            <div id="school-list" class="company-grid">
+                <!-- script.js: loadSchools() 엔진이 카드를 동적으로 생성 및 주입 -->
+            </div>
+        </section>
+
+        <!-- [Section: Community] 
+             전체 학교의 데이터를 통합하여 보여주는 Global 피드 시스템
+        -->
+        <section id="community">
+            <div style="margin-bottom: 3rem; display: flex; justify-content: space-between; align-items: flex-end;">
+                <div>
+                    <h2 style="font-size: 2rem;">통합 피드</h2>
+                    <p style="color: var(--text-mid);">전국 4개 소마고 학생들의 실시간 소통 공간</p>
+                </div>
+                <button class="btn btn-primary" onclick="checkLoginForWrite()">+ 피드 작성하기</button>
+            </div>
+            <div id="post-list" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <!-- script.js: loadPosts() 엔진이 게시글 렌더링 수행 -->
+            </div>
+        </section>
+
+        <!-- [Section: Companies] 
+             기업 데이터베이스 연동 및 커리어 지원 라우팅 섹션
+        -->
+        <section id="companies">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">커리어 매칭</h2>
+                <p style="color: var(--text-mid);">검증된 학생들과 유망한 기업의 만남</p>
+            </div>
+            <div class="company-grid" id="company-list">
+                <!-- script.js: loadCompanies() 엔진이 기업 정보 카드 생성 -->
+            </div>
+        </section>
+
+        <!-- [Section: Messages] 
+             보안 로직이 적용된 DM(Direct Message) 시스템 
+             비로그인 시 .lock-overlay 노출, 로그인 시 #message-ui 노출
+        -->
+        <section id="messages">
+            <h2 style="margin-bottom: 2rem;">다이렉트 메시지</h2>
+            <div id="message-lock" class="glass-card lock-overlay">
+                <p style="margin-bottom: 2rem; color: var(--text-mid);">개인정보 보호를 위해 메시지 기능은 로그인 후 이용 가능합니다.</p>
+                <button class="btn btn-primary" onclick="showSection('login')">로그인 화면으로 이동</button>
+            </div>
+            <div id="message-ui" class="glass-card" style="padding: 0; overflow: hidden; display: none; height: 550px;">
+                <div style="width: 30%; border-right: 1px solid var(--glass-border); padding: 1rem;" id="chat-list">
+                    <div class="post-row-hover" style="padding: 1rem; border-radius: 12px; background: rgba(255,255,255,0.05);">
+                        <b style="color: var(--accent-indigo);">대덕장인 (10기)</b>
+                        <p style="font-size: 0.75rem; color: var(--text-low);">최근 대화: 네 감사합니다!</p>
+                    </div>
+                </div>
+                <div style="width: 70%; display: flex; flex-direction: column;">
+                    <div id="message-container" style="flex: 1; padding: 2rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem;"></div>
+                    <div style="padding: 1.5rem; border-top: 1px solid var(--glass-border); display: flex; gap: 1rem;">
+                        <input type="text" id="msg-input" placeholder="메시지를 입력하세요...">
+                        <button class="btn btn-primary" onclick="sendMessage()" style="padding: 0 1.5rem;">전송</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [Section: Write] 
+             게시글 생성 인터페이스: Server Side API로 POST 요청을 보냄
+        -->
+        <section id="write">
+            <div style="max-width: 850px; margin: 0 auto;">
+                <h2 style="margin-bottom: 2rem;">새로운 피드 작성</h2>
+                <div class="glass-card">
+                    <div style="margin-bottom: 1.5rem;">
+                        <input type="text" id="post-title" placeholder="매력적인 제목을 입력하세요">
+                    </div>
+                    <div style="margin-bottom: 2rem;">
+                        <textarea id="post-content" placeholder="무슨 생각을 하고 계신가요? 코드로 세상을 바꾸는 이야기를 들려주세요." style="height: 300px; resize: none;"></textarea>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <button class="btn btn-primary" style="flex: 1;" onclick="submitPost()">피드 발행하기</button>
+                        <button class="btn" style="flex: 1;" onclick="showSection('community')">취소</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [Section: Login] 
+             시스템 보안 인증 게이트웨이
+        -->
+        <section id="login">
+            <div style="max-width: 420px; margin: 100px auto;" class="glass-card">
+                <h2 style="margin-bottom: 1rem; text-align: center; font-size: 2.5rem; font-weight: 900;">Sminside</h2>
+                <p style="text-align: center; color: var(--text-low); margin-bottom: 2.5rem;">소마고 학생 인증을 위해 로그인해 주세요.</p>
+                <div style="margin-bottom: 1rem;">
+                    <input type="text" id="login-id" placeholder="학번 또는 아이디">
+                </div>
+                <div style="margin-bottom: 2rem;">
+                    <input type="password" id="login-pw" placeholder="비밀번호">
+                </div>
+                <button class="btn btn-primary" style="width: 100%;" onclick="handleLogin()">로그인</button>
+                <div style="text-align: center; margin-top: 1.5rem; font-size: 0.8rem; color: var(--text-low);">
+                    계정이 없으신가요? <u>회원가입</u> | 테스트용 계정: admin / 1234
+                </div>
+            </div>
+        </section>
+
+        <!-- [Section: MyPage] 
+             개인화된 사용자 프로필 및 활동 대시보드
+        -->
+        <section id="mypage">
+            <div style="max-width: 700px; margin: 0 auto;">
+                <div class="glass-card" style="text-align: center;">
+                    <div style="width: 120px; height: 120px; background: linear-gradient(45deg, var(--accent-indigo), var(--accent-violet)); border-radius: 50%; margin: 0 auto 2rem; display: flex; align-items: center; justify-content: center; font-size: 3rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">👤</div>
+                    <h2 id="user-name" style="font-size: 2.5rem; margin-bottom: 0.5rem;">사용자</h2>
+                    <p id="user-bio" style="color: var(--text-mid); margin-bottom: 2rem;"></p>
+                    <div style="display: flex; justify-content: center; gap: 3rem; margin-bottom: 3rem;">
+                        <div><b id="user-followers" style="font-size: 1.5rem;">0</b><br><span style="color: var(--text-low);">팔로워</span></div>
+                        <div><b id="user-following" style="font-size: 1.5rem;">0</b><br><span style="color: var(--text-low);">팔로잉</span></div>
+                    </div>
+                    <button class="btn" onclick="handleLogout()" style="width: 100%;">로그아웃 및 세션 종료</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- [AI Engine: 스민봇] 
+         부동 소수점 모션이 적용된 AI 인터페이스 
+    -->
+    <div id="ai-chat-btn" onclick="toggleAIChat()" style="position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; background: linear-gradient(135deg, var(--accent-indigo), var(--accent-violet)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; cursor: pointer; box-shadow: 0 15px 35px rgba(0,0,0,0.6); z-index: 9999;">
+        🤖
+    </div>
+
+    <div id="ai-modal" class="glass-card" style="position: fixed; bottom: 110px; right: 30px; width: 380px; height: 550px; z-index: 9999; display: none; flex-direction: column; padding: 0; overflow: hidden; border-radius: 32px;">
+        <div style="padding: 1.5rem 2rem; background: rgba(255,255,255,0.05); border-bottom: 1px solid var(--glass-border); display: flex; justify-content: space-between; align-items: center;">
+            <b style="color: var(--accent-indigo); font-size: 1.1rem;">Sminside AI Assistant</b>
+            <span onclick="toggleAIChat()" style="cursor: pointer; font-size: 1.5rem; opacity: 0.5;">&times;</span>
+        </div>
+        <div id="ai-messages" style="flex: 1; padding: 2rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1.2rem;">
+            <div style="background: rgba(255,255,255,0.1); padding: 1rem 1.2rem; border-radius: 18px 18px 18px 4px; font-size: 0.95rem; max-width: 85%;">
+                반갑습니다! 스민사이드의 AI 도우미 스민봇입니다. 학교 생활이나 기술적인 고민이 있다면 무엇이든 물어보세요.
+            </div>
+        </div>
+        <div style="padding: 1.5rem; border-top: 1px solid var(--glass-border); display: flex; gap: 0.8rem;">
+            <input type="text" id="ai-input" placeholder="질문을 입력하세요..." style="background: rgba(0,0,0,0.2); font-size: 0.95rem;">
+            <button class="btn btn-primary" onclick="sendAIQuestion()" style="padding: 0 1.2rem;">전송</button>
+        </div>
+    </div>
+
+    <!-- [Modal: Post Detail] 
+         게시글 상세 조회용 모달 
+    -->
+    <div id="post-modal" class="modal" onclick="closeModal()">
+        <div class="modal-content glass-card" onclick="event.stopPropagation()">
+            <h2 id="modal-title" style="font-size: 2rem;"></h2>
+            <div id="modal-meta" style="color: var(--text-mid); font-size: 0.9rem; margin: 1.2rem 0;"></div>
+            <hr style="border: 0; border-top: 1px solid var(--glass-border); margin-bottom: 2rem;">
+            <div id="modal-content" style="font-size: 1.1rem; line-height: 1.8; color: var(--text-high); min-height: 200px;"></div>
+            <div style="margin-top: 3rem; display: flex; justify-content: flex-end;">
+                <button class="btn btn-primary" onclick="closeModal()">확인</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- [Engine: JS] 
+         전체 시스템의 비즈니스 로직을 제어하는 메인 컨트롤러 
+    -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대덕소프트웨어마이스터고 - Sminside</title>
+    
+    <!-- [Engine: CSS] 고품질 디자인 시스템 로드 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-school="대덕">
+    <!-- [Visual Engine] 통일된 브랜드 아이덴티티 성운 배경 -->
+    <div class="nebula-container"><div class="nebula n1"></div></div>
+    <div class="stars-canvas" id="stars"></div>
+
+    <!-- [Nav Engine] 유기적 연결을 위한 내비게이션 -->
+    <nav id="navbar">
+        <div class="logo" onclick="location.href='index.html'">Sminside</div>
+        <ul class="nav-links">
+            <li><a href="index.html" style="text-decoration: none; color: inherit;">메인 허브로 돌아가기</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- [Community Engine] 대덕소마고 전용 커뮤니티 피드 -->
+        <section class="active">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <h1 style="font-size: 3rem; margin-bottom: 1rem; color: var(--accent-indigo);">대덕 SW마고 커뮤니티</h1>
+                <p style="color: var(--text-mid);">대한민국 최초, 최고의 개발자들이 모인 공간 (13기 환영)</p>
+            </div>
+            
+            <!-- [Post Rendering Zone] script.js가 학교별 게시글을 동적으로 주입 -->
+            <div id="post-list" style="display: flex; flex-direction: column; gap: 1.5rem;"></div>
+            
+            <!-- [Write & Info] 글쓰기 버튼 및 학교 링크 -->
+            <div style="margin-top: 4rem; text-align: center; display: flex; gap: 1.5rem; justify-content: center;">
+                <button class="btn btn-primary" onclick="checkLoginForWrite()">+ 피드 작성</button>
+                <a href="https://dsmhs.djsch.kr/" target="_blank" class="btn">공식 사이트 방문</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- [Presentation Tool] 상세보기 모달 시스템 (공용) -->
+    <div id="post-modal" class="modal" onclick="closeModal()">
+        <div class="modal-content glass-card" onclick="event.stopPropagation()">
+            <h2 id="modal-title"></h2>
+            <div id="modal-meta" style="color: var(--text-mid); font-size: 0.8rem; margin: 1rem 0;"></div>
+            <hr style="border: 0; border-top: 1px solid var(--glass-border); margin-bottom: 1.5rem;">
+            <div id="modal-content"></div>
+            <button class="btn btn-primary" onclick="closeModal()" style="margin-top: 2rem;">닫기</button>
+        </div>
+    </div>
+
+    <!-- [Logic Engine] 데이터 통신 및 렌더링 스크립트 -->
+    <script src="script.js"></script>
+</body>
+</html>

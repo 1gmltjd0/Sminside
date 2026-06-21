@@ -4,24 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>부산소프트웨어마이스터고 - Sminside</title>
+    <!-- 발표 설명: 부산 학교 페이지에 공통 스타일을 연결합니다. -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- 발표 설명: 배경 장식 효과를 넣는 영역입니다. -->
     <div class="nebula-container"><div class="nebula n2"></div></div>
     <div class="stars-canvas" id="stars"></div>
 
+    <!-- 발표 설명: 메인 화면으로 이동할 수 있는 상단 메뉴입니다. -->
     <nav id="navbar">
         <div class="logo" onclick="location.href='index.html'">Sminside</div>
         <ul class="nav-links"><li><a href="index.html" style="text-decoration: none; color: inherit;">메인 허브</a></li></ul>
     </nav>
 
     <div class="container">
+        <!-- 발표 설명: 부산 SW마이스터고 커뮤니티 본문입니다. -->
         <section class="active">
             <div style="text-align: center; margin-bottom: 4rem;">
                 <h1 style="font-size: 3rem; margin-bottom: 1rem; color: var(--accent-rose);">부산 SW마고 커뮤니티</h1>
                 <p style="color: var(--text-mid);">미래 기술 시장을 선도하는 부산소마고 학생들의 공간입니다.</p>
             </div>
             
+            <!-- 발표 설명: 부산 학교 게시글 목록이 JavaScript로 들어오는 위치입니다. -->
             <div id="post-list" style="display: flex; flex-direction: column; gap: 1.5rem;"></div>
             
             <div style="margin-top: 3rem; text-align: center;">
@@ -32,7 +37,9 @@
     </div>
     <script src="script.js"></script>
     <script>
+        // 발표 설명: 페이지 로딩이 끝나면 부산 게시글을 불러오는 코드를 실행합니다.
         window.addEventListener('DOMContentLoaded', () => {
+            // 발표 설명: 공통 스크립트 준비 시간을 고려해 0.1초 뒤 게시글을 불러옵니다.
             setTimeout(() => loadPosts('부산'), 100); 
         });
     </script>

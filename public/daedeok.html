@@ -6,14 +6,18 @@
     <title>대덕소프트웨어마이스터고 - Sminside</title>
     
     <!-- [Engine: CSS] 고품질 디자인 시스템 로드 -->
+    <!-- 발표 설명: 학교별 커뮤니티 페이지도 같은 CSS를 사용해 디자인을 통일합니다. -->
     <link rel="stylesheet" href="style.css">
 </head>
+<!-- 발표 설명: data-school 속성은 이 페이지가 어떤 학교 게시글을 보여줄지 구분하는 값입니다. -->
 <body data-school="대덕">
     <!-- [Visual Engine] 통일된 브랜드 아이덴티티 성운 배경 -->
+    <!-- 발표 설명: 학교별 분위기를 다르게 보이게 하는 배경 효과입니다. -->
     <div class="nebula-container"><div class="nebula n1"></div></div>
     <div class="stars-canvas" id="stars"></div>
 
     <!-- [Nav Engine] 유기적 연결을 위한 내비게이션 -->
+    <!-- 발표 설명: 로고와 메인 화면으로 돌아가는 링크를 가진 상단 메뉴입니다. -->
     <nav id="navbar">
         <div class="logo" onclick="location.href='index.html'">Sminside</div>
         <ul class="nav-links">
@@ -23,6 +27,7 @@
 
     <div class="container">
         <!-- [Community Engine] 대덕소마고 전용 커뮤니티 피드 -->
+        <!-- 발표 설명: 이 페이지의 실제 학교 커뮤니티 내용을 담는 섹션입니다. -->
         <section class="active">
             <div style="text-align: center; margin-bottom: 4rem;">
                 <h1 style="font-size: 3rem; margin-bottom: 1rem; color: var(--accent-indigo);">대덕 SW마고 커뮤니티</h1>
@@ -30,6 +35,7 @@
             </div>
             
             <!-- [Post Rendering Zone] script.js가 학교별 게시글을 동적으로 주입 -->
+            <!-- 발표 설명: script.js가 이 학교에 해당하는 게시글 목록을 넣는 자리입니다. -->
             <div id="post-list" style="display: flex; flex-direction: column; gap: 1.5rem;"></div>
             
             <!-- [Write & Info] 글쓰기 버튼 및 학교 링크 -->
@@ -41,6 +47,7 @@
     </div>
 
     <!-- [Presentation Tool] 상세보기 모달 시스템 (공용) -->
+    <!-- 발표 설명: 게시글을 클릭했을 때 상세 내용을 보여주는 공용 모달입니다. -->
     <div id="post-modal" class="modal" onclick="closeModal()">
         <div class="modal-content glass-card" onclick="event.stopPropagation()">
             <h2 id="modal-title"></h2>
@@ -52,6 +59,7 @@
     </div>
 
     <!-- [Logic Engine] 데이터 통신 및 렌더링 스크립트 -->
+    <!-- 발표 설명: 게시글 불러오기와 모달 동작을 담당하는 JavaScript 파일입니다. -->
     <script src="script.js"></script>
 </body>
 </html>

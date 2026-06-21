@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>글쓰기 - Sminside</title>
+    <!-- 발표 설명: 글쓰기 화면에도 공통 디자인을 적용합니다. -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- 발표 설명: 다른 페이지로 이동할 수 있는 상단 메뉴입니다. -->
     <nav>
         <a href="index.html" class="logo">Sminside</a>
         <ul class="nav-links">
@@ -16,12 +18,17 @@
             <li><a href="login.html">로그인</a></li>
         </ul>
     </nav>
+    <!-- 발표 설명: 글쓰기 폼을 담는 본문 영역입니다. -->
     <div class="container">
         <h1>새 글 작성</h1>
+        <!-- 발표 설명: 제목 입력창, 내용 입력창, 등록 버튼을 카드 안에 배치합니다. -->
         <div class="glass-card" style="margin-top: 2rem;">
+            <!-- 발표 설명: 게시글 제목을 입력하는 한 줄 입력창입니다. -->
             <input type="text" placeholder="제목을 입력하세요" style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 8px; color: white; margin-bottom: 1rem;">
+            <!-- 발표 설명: 게시글 본문을 입력하는 여러 줄 입력창입니다. -->
             <textarea placeholder="내용을 입력하세요" style="width: 100%; height: 300px; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 8px; color: white; margin-bottom: 1rem;"></textarea>
             <div style="text-align: right;">
+                <!-- 발표 설명: 작성한 글을 등록하는 버튼입니다. -->
                 <button class="btn">등록하기</button>
             </div>
         </div>

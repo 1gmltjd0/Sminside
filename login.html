@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인 - Sminside</title>
+    <!-- 발표 설명: 로그인 화면도 같은 분위기를 유지하도록 공통 CSS를 연결합니다. -->
     <link rel="stylesheet" href="style.css">
     <style>
+        /* 발표 설명: 로그인 카드를 화면 중앙에 오도록 정렬합니다. */
         .login-container {
             min-height: 70vh;
             display: flex;
@@ -13,6 +15,7 @@
             align-items: center;
         }
 
+        /* 발표 설명: 로그인 입력창을 담는 카드의 너비와 안쪽 여백을 정합니다. */
         .login-card {
             width: 100%;
             max-width: 400px;
@@ -20,6 +23,7 @@
             text-align: center;
         }
 
+        /* 발표 설명: 라벨과 입력창을 한 묶음으로 보기 좋게 정리합니다. */
         .form-group {
             margin-bottom: 1.5rem;
             text-align: left;
@@ -48,6 +52,7 @@
             background: rgba(255, 255, 255, 0.08);
         }
 
+        /* 발표 설명: 로그인 실패 시 보여줄 오류 문구의 색과 표시 상태를 정합니다. */
         .error-msg {
             color: #ff6b6b;
             font-size: 0.85rem;
@@ -70,6 +75,7 @@
 </head>
 <body>
 
+    <!-- 발표 설명: 로그인 페이지에서도 다른 화면으로 이동할 수 있는 상단 메뉴입니다. -->
     <nav>
         <a href="index.html" class="logo">Sminside</a>
         <ul class="nav-links">
@@ -80,25 +86,30 @@
         </ul>
     </nav>
 
+    <!-- 발표 설명: 로그인 폼을 화면 중앙에 배치하기 위한 본문 컨테이너입니다. -->
     <div class="container login-container">
         <!-- 로그인 카드: 깔끔하게 중앙에 배치함 -->
         <div class="glass-card login-card">
             <h2 style="margin-bottom: 2rem;">로그인</h2>
             
+            <!-- 발표 설명: 아이디와 비밀번호를 입력한 뒤 제출하면 마이페이지로 이동한다고 가정한 폼입니다. -->
             <form action="mypage.html"> <!-- 로그인 성공 시 마이페이지로 이동한다고 가정 -->
                 <div class="form-group">
                     <label for="username">아이디</label>
+                    <!-- 발표 설명: 사용자의 아이디를 입력받는 텍스트 입력창입니다. -->
                     <input type="text" id="username" placeholder="아이디를 입력하세요" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="password">비밀번호</label>
+                    <!-- 발표 설명: 비밀번호가 보이지 않도록 처리되는 입력창입니다. -->
                     <input type="password" id="password" placeholder="비밀번호를 입력하세요" required>
                 </div>
 
                 <!-- 오류 메시지 영역: 나중에 자바스크립트로 제어할 부분 -->
                 <div class="error-msg">아이디 또는 비밀번호가 일치하지 않습니다.</div>
 
+                <!-- 발표 설명: 폼 내용을 제출하는 로그인 버튼입니다. -->
                 <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">로그인</button>
             </form>
 

@@ -6,6 +6,7 @@
     <title>기업 매칭 지원 - Sminside</title>
     
     <!-- [CSS Engine] 고품질 글래스모피즘 스타일 시트 연동 -->
+    <!-- 발표 설명: 기업 지원서 화면의 공통 디자인을 불러옵니다. -->
     <link rel="stylesheet" href="style.css">
     
     <!-- [Presentation Note]
@@ -14,9 +15,11 @@
 </head>
 <body>
     <!-- 시각적 일관성을 위한 배경 시스템 -->
+    <!-- 발표 설명: 배경에 깊이감 있는 빛 효과를 넣는 장식 영역입니다. -->
     <div class="nebula-container"><div class="nebula n1"></div></div>
     <div class="stars-canvas" id="stars"></div>
 
+    <!-- 발표 설명: 메인 화면으로 돌아갈 수 있는 상단 메뉴입니다. -->
     <nav id="navbar">
         <div class="logo" onclick="location.href='index.html'">Sminside</div>
         <ul class="nav-links">
@@ -27,6 +30,7 @@
     <div class="container">
         <section class="active">
             <div style="text-align: center; margin-bottom: 3rem;">
+                <!-- 발표 설명: 기업 지원 페이지의 제목을 표시합니다. -->
                 <h1 id="appeal-title" style="font-size: 2.5rem; margin-bottom: 1rem; color: var(--accent-indigo);">기업 매칭 지원</h1>
                 <p style="color: var(--text-mid);">나의 꿈과 열정을 기업에 전달하세요.</p>
             </div>
@@ -35,16 +39,19 @@
             <div class="glass-card" style="max-width: 800px; margin: 0 auto;">
                 <div style="margin-bottom: 1.5rem;">
                     <label style="display: block; margin-bottom: 0.5rem; color: var(--text-mid); font-size: 0.9rem;">지원 기업</label>
+                    <!-- 발표 설명: URL에서 전달받은 지원 기업명을 자동으로 표시하는 읽기 전용 입력창입니다. -->
                     <input type="text" id="target-company" readonly style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; color: var(--accent-indigo); font-weight: 800;">
                 </div>
                 
                 <div style="margin-bottom: 1.5rem;">
                     <label style="display: block; margin-bottom: 0.5rem; color: var(--text-mid); font-size: 0.9rem;">포트폴리오 링크 (GitHub / Notion)</label>
+                    <!-- 발표 설명: 지원자의 GitHub나 Notion 포트폴리오 주소를 입력받습니다. -->
                     <input type="text" id="portfolio-url" placeholder="https://github.com/username" style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; color: #fff;">
                 </div>
 
                 <div style="margin-bottom: 2rem;">
                     <label style="display: block; margin-bottom: 0.5rem; color: var(--text-mid); font-size: 0.9rem;">자기소개 및 어필 (300자 내외)</label>
+                    <!-- 발표 설명: 자기소개와 기업에 전달할 내용을 입력하는 영역입니다. -->
                     <textarea id="appeal-content" placeholder="기업에 전달하고 싶은 메시지를 입력하세요." style="width: 100%; height: 250px; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; color: #fff; resize: none;"></textarea>
                 </div>
 
@@ -59,6 +66,7 @@
     <script src="script.js"></script>
     <script>
         // [Logic] URL 파라미터에서 지원할 기업명을 추출하여 폼에 자동 입력
+        // 발표 설명: 페이지가 열리면 URL 파라미터에서 기업명을 읽고 배경 효과를 초기화합니다.
         window.onload = () => {
             const params = new URLSearchParams(window.location.search);
             const companyName = params.get('company') || '선택된 기업 없음';
@@ -69,6 +77,7 @@
             initScrollEffects();
         };
 
+        // 발표 설명: 지원서 입력값이 비어 있는지 확인한 뒤 제출 완료 메시지를 보여줍니다.
         function submitAppeal() {
             const url = document.getElementById('portfolio-url').value;
             const content = document.getElementById('appeal-content').value;

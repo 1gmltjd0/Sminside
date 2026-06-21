@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>학교 소개 - Sminside</title>
+    <!-- 발표 설명: 학교 소개 페이지에 공통 스타일을 적용합니다. -->
     <link rel="stylesheet" href="style.css">
     <style>
+        /* 발표 설명: 지역별 학교 필터 버튼들을 한 줄로 배치합니다. */
         .filter-tabs {
             display: flex;
             gap: 1rem;
@@ -29,6 +31,7 @@
             border-color: var(--accent-color);
         }
 
+        /* 발표 설명: 학교 소개 카드를 화면 크기에 맞춰 여러 칸으로 배치합니다. */
         .school-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -40,6 +43,7 @@
             color: var(--accent-color);
         }
 
+        /* 발표 설명: 학교 위치와 개교 연도 같은 짧은 정보를 꾸밉니다. */
         .info-item {
             font-size: 0.9rem;
             margin-bottom: 0.3rem;
@@ -55,6 +59,7 @@
 </head>
 <body>
 
+    <!-- 발표 설명: 현재 학교 소개 메뉴가 강조되는 상단 메뉴입니다. -->
     <nav>
         <a href="index.html" class="logo">Sminside</a>
         <ul class="nav-links">
@@ -66,12 +71,14 @@
     </nav>
 
     <div class="container">
+        <!-- 발표 설명: 페이지 제목과 SW마이스터고 소개 문장을 보여줍니다. -->
         <header style="margin-bottom: 3rem;">
             <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">전국 SW마이스터고 소개</h1>
             <p style="color: var(--text-sub);">대한민국의 소프트웨어 산업을 이끌어갈 4개의 특수목적 고등학교입니다.</p>
         </header>
 
         <!-- 지역별 필터 탭: 클릭하면 해당 지역의 학교만 보여주는 기능을 생각하며 만듦 -->
+        <!-- 발표 설명: 지역별로 학교를 골라 볼 수 있게 만든 필터 버튼 영역입니다. -->
         <div class="filter-tabs">
             <div class="tab active">전체</div>
             <div class="tab">충청</div>
@@ -80,6 +87,7 @@
             <div class="tab">수도권(준비중)</div>
         </div>
 
+        <!-- 발표 설명: 각 학교 정보를 카드 형태로 모아 보여주는 영역입니다. -->
         <div class="school-grid">
             <!-- 대덕 소프트웨어 마이스터고등학교 -->
             <div class="glass-card school-card">
@@ -87,6 +95,7 @@
                 <div class="info-item">📍 대전광역시 유성구</div>
                 <div class="info-item">📅 2015년 개교 (제 1호)</div>
                 <p class="description">우리나라 최초의 소프트웨어 마이스터고등학교로, 깊은 역사와 전통을 자랑합니다.</p>
+                <!-- 발표 설명: 버튼을 누르면 해당 학교 공식 홈페이지가 새 탭으로 열립니다. -->
                 <a href="https://dsmhs.djsch.kr" target="_blank" class="btn" style="width: 100%; text-align: center;">홈페이지 방문</a>
             </div>
 

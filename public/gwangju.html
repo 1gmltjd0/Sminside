@@ -4,24 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>광주소프트웨어마이스터고 - Sminside</title>
+    <!-- 발표 설명: 광주 학교 페이지에도 공통 CSS를 적용합니다. -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- 발표 설명: 배경의 시각 효과를 만드는 요소입니다. -->
     <div class="nebula-container"><div class="nebula n3"></div></div>
     <div class="stars-canvas" id="stars"></div>
 
+    <!-- 발표 설명: Sminside 메인으로 돌아갈 수 있는 메뉴입니다. -->
     <nav id="navbar">
         <div class="logo" onclick="location.href='index.html'">Sminside</div>
         <ul class="nav-links"><li><a href="index.html" style="text-decoration: none; color: inherit;">메인 허브</a></li></ul>
     </nav>
 
     <div class="container">
+        <!-- 발표 설명: 광주 SW마이스터고 커뮤니티 내용을 보여주는 영역입니다. -->
         <section class="active">
             <div style="text-align: center; margin-bottom: 4rem;">
                 <h1 style="font-size: 3rem; margin-bottom: 1rem; color: var(--accent-emerald);">광주 SW마고 커뮤니티</h1>
                 <p style="color: var(--text-mid);">실무 중심의 교육으로 내일의 개발자를 꿈꾸는 학생들의 공간입니다.</p>
             </div>
             
+            <!-- 발표 설명: loadPosts 함수가 광주 학교 게시글을 넣어 주는 자리입니다. -->
             <div id="post-list" style="display: flex; flex-direction: column; gap: 1.5rem;"></div>
             
             <div style="margin-top: 3rem; text-align: center;">
@@ -32,7 +37,9 @@
     </div>
     <script src="script.js"></script>
     <script>
+        // 발표 설명: HTML 구조가 준비되면 광주 학교 게시글을 불러오도록 예약합니다.
         window.addEventListener('DOMContentLoaded', () => {
+            // 발표 설명: script.js 초기화가 끝난 뒤 게시글 목록을 불러오기 위해 짧게 기다립니다.
             setTimeout(() => loadPosts('광주'), 100); 
         });
     </script>

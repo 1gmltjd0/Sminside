@@ -4,24 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>대구소프트웨어마이스터고 - Sminside</title>
+    <!-- 발표 설명: 대구 학교 페이지에 공통 스타일을 적용합니다. -->
     <link rel="stylesheet" href="style.css">
 </head>
+<!-- 발표 설명: data-school 속성으로 대구 학교 게시글만 구분해서 불러올 수 있습니다. -->
 <body data-school="대구">
+    <!-- 발표 설명: 배경에 학교별 색감의 빛 효과를 넣습니다. -->
     <div class="nebula-container"><div class="nebula n2"></div></div>
     <div class="stars-canvas" id="stars"></div>
 
+    <!-- 발표 설명: 메인 화면으로 돌아가기 위한 상단 메뉴입니다. -->
     <nav id="navbar">
         <div class="logo" onclick="location.href='index.html'">Sminside</div>
         <ul class="nav-links"><li><a href="index.html" style="text-decoration: none; color: inherit;">메인 허브로 돌아가기</a></li></ul>
     </nav>
 
     <div class="container">
+        <!-- 발표 설명: 대구 SW마이스터고 전용 커뮤니티 본문입니다. -->
         <section class="active">
             <div style="text-align: center; margin-bottom: 4rem;">
                 <h1 style="font-size: 3rem; margin-bottom: 1rem; color: var(--accent-violet);">대구 SW마고 커뮤니티</h1>
                 <p style="color: var(--text-mid);">창의적이고 도전적인 대구소마고 학생들의 공간입니다.</p>
             </div>
             
+            <!-- 발표 설명: JavaScript가 게시글 목록을 여기에 표시합니다. -->
             <div id="post-list" style="display: flex; flex-direction: column; gap: 1.5rem;"></div>
             
             <div style="margin-top: 4rem; text-align: center; display: flex; gap: 1.5rem; justify-content: center;">
@@ -31,6 +37,7 @@
         </section>
     </div>
 
+    <!-- 발표 설명: 게시글 상세 내용을 팝업으로 보여주는 모달입니다. -->
     <div id="post-modal" class="modal" onclick="closeModal()">
         <div class="modal-content glass-card" onclick="event.stopPropagation()">
             <h2 id="modal-title"></h2>
@@ -41,6 +48,7 @@
         </div>
     </div>
 
+    <!-- 발표 설명: 공통 기능을 담은 JavaScript 파일을 연결합니다. -->
     <script src="script.js"></script>
 </body>
 </html>

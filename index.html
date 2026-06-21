@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <!-- 발표 설명: UTF-8 문자 인코딩을 사용해 한글과 특수문자가 표시되도록 설정합니다. -->
     <meta charset="UTF-8">
+    <!-- 발표 설명: 모바일과 PC 화면 크기에 맞게 페이지 폭을 자동 조절합니다. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sminside - SW마이스터고 커뮤니티</title>
     <!-- 외부 스타일 시트 연결 -->
+    <!-- 발표 설명: 모든 페이지에서 공통으로 사용하는 디자인 파일(style.css)을 연결합니다. -->
     <link rel="stylesheet" href="style.css">
     <style>
         /* index.html 전용 스타일 */
+        /* 발표 설명: 첫 화면의 큰 소개 영역을 화면 중앙에 배치합니다. */
         .hero {
             height: 80vh;
             display: flex;
@@ -31,6 +35,7 @@
             margin-bottom: 2rem;
         }
 
+        /* 발표 설명: 주요 기능 카드 3개를 반응형 그리드로 정렬합니다. */
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -38,6 +43,7 @@
             margin-bottom: 4rem;
         }
 
+        /* 발표 설명: 최근 게시글 미리보기 영역의 위쪽 간격을 줍니다. */
         .recent-posts {
             margin-top: 4rem;
         }
@@ -63,6 +69,7 @@
 <body>
 
     <!-- 상단 메뉴 바 -->
+    <!-- 발표 설명: 사이트 상단 메뉴입니다. 로고와 각 페이지 이동 링크를 보여줍니다. -->
     <nav>
         <a href="index.html" class="logo">Sminside</a>
         <ul class="nav-links">
@@ -73,8 +80,10 @@
         </ul>
     </nav>
 
+    <!-- 발표 설명: 본문 전체를 감싸서 화면 가운데에 정렬하고 일정한 폭을 유지합니다. -->
     <div class="container">
         <!-- 메인 히어로 섹션: 사이트의 첫 인상을 결정하는 곳 -->
+        <!-- 발표 설명: 방문자가 처음 보는 메인 소개 문구와 시작 버튼입니다. -->
         <header class="hero">
             <h1>전국 SW마이스터고의 중심</h1>
             <p>우리는 코드로 세상을 바꾸는 학생들의 공간입니다.</p>
@@ -82,6 +91,7 @@
         </header>
 
         <!-- 주요 기능 소개 카드 섹션 -->
+        <!-- 발표 설명: 학교 소개, 커뮤니티, 마이페이지 기능을 카드 형태로 안내합니다. -->
         <section class="features">
             <div class="glass-card">
                 <h3>학교 소개</h3>
@@ -101,6 +111,7 @@
         </section>
 
         <!-- 최근 게시글 미리보기: 사용자가 궁금해할 만한 최신 글들 -->
+        <!-- 발표 설명: 커뮤니티의 최신 글처럼 보이는 목록을 보여주는 영역입니다. -->
         <section class="recent-posts glass-card">
             <h2 style="margin-bottom: 1.5rem;">📌 최근 게시글</h2>
             <div class="post-list">
@@ -125,6 +136,7 @@
     </div>
 
     <!-- 하단 정보 영역 -->
+    <!-- 발표 설명: 페이지 하단 저작권 정보를 표시합니다. -->
     <footer>
         <p>&copy; 2026 Sminside. 제작자: 김예준 (대덕SW마고)</p>
     </footer>

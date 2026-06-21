@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이페이지 - Sminside</title>
+    <!-- 발표 설명: 마이페이지에 공통 디자인을 적용합니다. -->
     <link rel="stylesheet" href="style.css">
     <style>
+        /* 발표 설명: 프로필 이미지와 사용자 정보를 가로로 배치합니다. */
         .profile-section {
             display: flex;
             align-items: center;
@@ -13,6 +15,7 @@
             margin-bottom: 3rem;
         }
 
+        /* 발표 설명: 원형 프로필 이미지를 만들고 가운데에 아이콘을 배치합니다. */
         .profile-img {
             width: 120px;
             height: 120px;
@@ -34,6 +37,7 @@
             margin-bottom: 1rem;
         }
 
+        /* 발표 설명: 작성 글 수와 댓글 수 같은 통계를 2칸 그리드로 보여줍니다. */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -64,6 +68,7 @@
             padding-left: 1rem;
         }
 
+        /* 발표 설명: 내가 쓴 글 목록을 클릭 가능한 카드처럼 보이게 만듭니다. */
         .post-link {
             display: block;
             padding: 1.2rem;
@@ -84,6 +89,7 @@
 </head>
 <body>
 
+    <!-- 발표 설명: 현재 마이페이지 메뉴를 강조한 상단 내비게이션입니다. -->
     <nav>
         <a href="index.html" class="logo">Sminside</a>
         <ul class="nav-links">
@@ -96,6 +102,7 @@
 
     <div class="container">
         <!-- 프로필 섹션: 사용자의 기본 정보를 보여줌 -->
+        <!-- 발표 설명: 사용자 이름, 학교, 자기소개가 들어가는 프로필 영역입니다. -->
         <header class="glass-card profile-section">
             <div class="profile-img">👤</div>
             <div class="profile-info">
@@ -106,6 +113,7 @@
         </header>
 
         <!-- 활동 통계: 내가 쓴 글과 댓글 수를 시각적으로 보여줌 -->
+        <!-- 발표 설명: 사용자의 활동 수치를 짧게 요약해서 보여줍니다. -->
         <div class="stats-grid">
             <div class="glass-card stat-card">
                 <div class="stat-value">12</div>
@@ -118,6 +126,7 @@
         </div>
 
         <!-- 내가 쓴 게시글 목록: 클릭하면 해당 글로 이동할 수 있게 함 -->
+        <!-- 발표 설명: 사용자가 작성한 게시글 목록을 보여주는 영역입니다. -->
         <section>
             <div class="my-posts-header">
                 <h3>내가 쓴 게시글</h3>

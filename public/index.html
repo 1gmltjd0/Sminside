@@ -9,22 +9,26 @@
          디자인 시스템과 글래스모피즘 코어 엔진을 로드합니다. 
          발표 포인트: 변수를 활용한 중앙 집중식 색상 관리 (Root Variables)
     -->
+    <!-- 발표 설명: public 폴더의 메인 화면은 공통 CSS와 script.js로 디자인과 동작을 나눠 관리합니다. -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- [Visual Engine] 
          레이어링된 배경 엔진: z-index를 이용해 성운과 별빛을 분리 배치하여 깊이감 형성 
     -->
+    <!-- 발표 설명: 배경의 움직이는 빛 효과를 담당하는 장식 요소입니다. -->
     <div class="nebula-container">
         <div class="nebula n1"></div>
         <div class="nebula n2"></div>
         <div class="nebula n3"></div>
     </div>
+    <!-- 발표 설명: JavaScript가 별 배경을 그려 넣을 위치입니다. -->
     <div class="stars-canvas" id="stars"></div>
 
     <!-- [Nav Engine] 
          내비게이션 시스템: id="navbar"를 통해 스크롤 상태에 따른 동적 클래스 토글링 수행 
     -->
+    <!-- 발표 설명: 클릭하면 showSection 함수가 실행되어 화면 섹션을 바꾸는 메뉴입니다. -->
     <nav id="navbar">
         <div class="logo" onclick="showSection('home')">Sminside</div>
         <ul class="nav-links">
@@ -42,11 +46,13 @@
         <!-- [Section: Home] 
              브랜드 아이덴티티를 전달하는 메인 랜딩 섹션
         -->
+        <!-- 발표 설명: 처음 보이는 홈 섹션이며 active 클래스가 붙어 화면에 표시됩니다. -->
         <section id="home" class="active">
             <div style="text-align: center; padding: 120px 0;">
                 <h1 style="font-size: 4.5rem; margin-bottom: 1.5rem; font-weight: 900; letter-spacing: -3px;">Sminside.</h1>
                 <p style="color: var(--text-mid); margin-bottom: 3.5rem; font-size: 1.3rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.5;">SW마이스터고 우리들의 <br>진짜 이야기가 시작되는 곳</p>
                 <div style="display: flex; gap: 1.5rem; justify-content: center;">
+                    <!-- 발표 설명: 클릭하면 커뮤니티 섹션으로 이동합니다. -->
                     <button class="btn btn-primary" onclick="showSection('community')">통합 피드 입장</button>
                     <button class="btn" onclick="showSection('schools')">학교별 공간 탐색</button>
                 </div>
@@ -56,11 +62,13 @@
         <!-- [Section: Schools] 
              각 학교별 전용 페이지로 라우팅되는 엔트리 포인트
         -->
+        <!-- 발표 설명: 학교 카드 목록을 보여주는 섹션입니다. 실제 카드는 script.js가 채웁니다. -->
         <section id="schools">
             <div style="text-align: center; margin-bottom: 4rem;">
                 <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">마이스터의 요람</h2>
                 <p style="color: var(--text-mid);">각 학교를 클릭하여 전용 커뮤니티에 입장하세요.</p>
             </div>
+            <!-- 발표 설명: loadSchools 함수가 학교 카드들을 동적으로 넣는 자리입니다. -->
             <div id="school-list" class="company-grid">
                 <!-- script.js: loadSchools() 엔진이 카드를 동적으로 생성 및 주입 -->
             </div>
@@ -69,14 +77,17 @@
         <!-- [Section: Community] 
              전체 학교의 데이터를 통합하여 보여주는 Global 피드 시스템
         -->
+        <!-- 발표 설명: 전체 학교의 게시글을 한곳에 모아 보여주는 섹션입니다. -->
         <section id="community">
             <div style="margin-bottom: 3rem; display: flex; justify-content: space-between; align-items: flex-end;">
                 <div>
                     <h2 style="font-size: 2rem;">통합 피드</h2>
                     <p style="color: var(--text-mid);">전국 4개 소마고 학생들의 실시간 소통 공간</p>
                 </div>
+                <!-- 발표 설명: 로그인 여부를 확인한 뒤 글쓰기 화면으로 이동시키는 버튼입니다. -->
                 <button class="btn btn-primary" onclick="checkLoginForWrite()">+ 피드 작성하기</button>
             </div>
+            <!-- 발표 설명: loadPosts 함수가 게시글 목록을 동적으로 넣는 영역입니다. -->
             <div id="post-list" style="display: flex; flex-direction: column; gap: 1.5rem;">
                 <!-- script.js: loadPosts() 엔진이 게시글 렌더링 수행 -->
             </div>
@@ -85,6 +96,7 @@
         <!-- [Section: Companies] 
              기업 데이터베이스 연동 및 커리어 지원 라우팅 섹션
         -->
+        <!-- 발표 설명: 학생과 기업을 연결하는 기업 매칭 섹션입니다. -->
         <section id="companies">
             <div style="text-align: center; margin-bottom: 4rem;">
                 <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">커리어 매칭</h2>
@@ -99,6 +111,7 @@
              보안 로직이 적용된 DM(Direct Message) 시스템 
              비로그인 시 .lock-overlay 노출, 로그인 시 #message-ui 노출
         -->
+        <!-- 발표 설명: 로그인 상태에 따라 잠금 화면 또는 메시지 UI를 보여주는 섹션입니다. -->
         <section id="messages">
             <h2 style="margin-bottom: 2rem;">다이렉트 메시지</h2>
             <div id="message-lock" class="glass-card lock-overlay">
@@ -125,6 +138,7 @@
         <!-- [Section: Write] 
              게시글 생성 인터페이스: Server Side API로 POST 요청을 보냄
         -->
+        <!-- 발표 설명: 새 게시글을 작성하는 입력 폼 섹션입니다. -->
         <section id="write">
             <div style="max-width: 850px; margin: 0 auto;">
                 <h2 style="margin-bottom: 2rem;">새로운 피드 작성</h2>
@@ -146,6 +160,7 @@
         <!-- [Section: Login] 
              시스템 보안 인증 게이트웨이
         -->
+        <!-- 발표 설명: 테스트 계정으로 로그인하는 입력 화면입니다. -->
         <section id="login">
             <div style="max-width: 420px; margin: 100px auto;" class="glass-card">
                 <h2 style="margin-bottom: 1rem; text-align: center; font-size: 2.5rem; font-weight: 900;">Sminside</h2>
@@ -166,6 +181,7 @@
         <!-- [Section: MyPage] 
              개인화된 사용자 프로필 및 활동 대시보드
         -->
+        <!-- 발표 설명: 로그인한 사용자의 프로필과 활동 정보를 보여주는 섹션입니다. -->
         <section id="mypage">
             <div style="max-width: 700px; margin: 0 auto;">
                 <div class="glass-card" style="text-align: center;">
@@ -185,10 +201,12 @@
     <!-- [AI Engine: 스민봇] 
          부동 소수점 모션이 적용된 AI 인터페이스 
     -->
+    <!-- 발표 설명: 오른쪽 아래의 AI 채팅 버튼이며 클릭하면 채팅창을 열고 닫습니다. -->
     <div id="ai-chat-btn" onclick="toggleAIChat()" style="position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; background: linear-gradient(135deg, var(--accent-indigo), var(--accent-violet)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; cursor: pointer; box-shadow: 0 15px 35px rgba(0,0,0,0.6); z-index: 9999;">
         🤖
     </div>
 
+    <!-- 발표 설명: AI 질문과 답변이 표시되는 채팅 모달 창입니다. -->
     <div id="ai-modal" class="glass-card" style="position: fixed; bottom: 110px; right: 30px; width: 380px; height: 550px; z-index: 9999; display: none; flex-direction: column; padding: 0; overflow: hidden; border-radius: 32px;">
         <div style="padding: 1.5rem 2rem; background: rgba(255,255,255,0.05); border-bottom: 1px solid var(--glass-border); display: flex; justify-content: space-between; align-items: center;">
             <b style="color: var(--accent-indigo); font-size: 1.1rem;">Sminside AI Assistant</b>
@@ -208,6 +226,7 @@
     <!-- [Modal: Post Detail] 
          게시글 상세 조회용 모달 
     -->
+    <!-- 발표 설명: 게시글을 클릭했을 때 자세한 내용을 보여주는 팝업 모달입니다. -->
     <div id="post-modal" class="modal" onclick="closeModal()">
         <div class="modal-content glass-card" onclick="event.stopPropagation()">
             <h2 id="modal-title" style="font-size: 2rem;"></h2>
@@ -223,6 +242,7 @@
     <!-- [Engine: JS] 
          전체 시스템의 비즈니스 로직을 제어하는 메인 컨트롤러 
     -->
+    <!-- 발표 설명: 섹션 전환, 게시글 표시, 로그인 등 실제 동작을 담당하는 JavaScript 파일을 불러옵니다. -->
     <script src="script.js"></script>
 </body>
 </html>

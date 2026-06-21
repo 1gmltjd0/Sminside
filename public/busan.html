@@ -4,42 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>부산소프트웨어마이스터고 - Sminside</title>
-    <!-- 발표 설명: 부산 학교 페이지에 공통 스타일을 연결합니다. -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- 발표 설명: 배경 장식 효과를 넣는 영역입니다. -->
+    <!-- 코드 설명: 부산 페이지의 배경 효과를 만들기 위한 장식 요소입니다. n2 클래스가 CSS에서 정의된 특정 빛 효과를 적용합니다. -->
     <div class="nebula-container"><div class="nebula n2"></div></div>
+    <!-- 코드 설명: stars라는 id를 통해 JavaScript가 이 div 안에 별 배경 요소들을 추가합니다. -->
     <div class="stars-canvas" id="stars"></div>
 
-    <!-- 발표 설명: 메인 화면으로 이동할 수 있는 상단 메뉴입니다. -->
+    <!-- 코드 설명: 학교별 페이지에도 같은 nav 구조를 사용해 사용자가 메인 페이지로 쉽게 돌아가게 했습니다. -->
     <nav id="navbar">
         <div class="logo" onclick="location.href='index.html'">Sminside</div>
         <ul class="nav-links"><li><a href="index.html" style="text-decoration: none; color: inherit;">메인 허브</a></li></ul>
     </nav>
 
     <div class="container">
-        <!-- 발표 설명: 부산 SW마이스터고 커뮤니티 본문입니다. -->
+        <!-- 코드 설명: 부산 SW마이스터고 커뮤니티의 제목, 게시글 목록, 글쓰기 버튼을 담는 본문 섹션입니다. -->
         <section class="active">
             <div style="text-align: center; margin-bottom: 4rem;">
                 <h1 style="font-size: 3rem; margin-bottom: 1rem; color: var(--accent-rose);">부산 SW마고 커뮤니티</h1>
                 <p style="color: var(--text-mid);">미래 기술 시장을 선도하는 부산소마고 학생들의 공간입니다.</p>
             </div>
             
-            <!-- 발표 설명: 부산 학교 게시글 목록이 JavaScript로 들어오는 위치입니다. -->
+            <!-- 코드 설명: 이 div는 처음에는 비어 있지만, loadPosts 함수가 부산 게시글 데이터를 화면에 추가합니다. -->
             <div id="post-list" style="display: flex; flex-direction: column; gap: 1.5rem;"></div>
             
             <div style="margin-top: 3rem; text-align: center;">
+                <!-- 코드 설명: CSS 변수 accent-rose를 사용해 부산 페이지의 글쓰기 버튼만 다른 강조색으로 보이게 했습니다. -->
                 <button class="btn btn-primary" style="background: var(--accent-rose);" onclick="checkLoginForWrite()">글쓰기</button>
                 <a href="https://bssw.hs.kr/" target="_blank" class="btn" style="margin-left: 1rem;">공식 홈페이지</a>
             </div>
         </section>
     </div>
+    <!-- 코드 설명: 공통 기능 파일입니다. 이 파일이 있어야 checkLoginForWrite와 loadPosts 함수를 사용할 수 있습니다. -->
     <script src="script.js"></script>
     <script>
-        // 발표 설명: 페이지 로딩이 끝나면 부산 게시글을 불러오는 코드를 실행합니다.
+        // 코드 설명: HTML이 준비된 시점에 실행할 코드를 등록합니다. 여기서는 게시글을 불러오는 준비 단계입니다.
         window.addEventListener('DOMContentLoaded', () => {
-            // 발표 설명: 공통 스크립트 준비 시간을 고려해 0.1초 뒤 게시글을 불러옵니다.
+            // 코드 설명: loadPosts에 학교 이름을 넘겨 해당 학교 게시글만 불러오도록 만든 코드입니다.
             setTimeout(() => loadPosts('부산'), 100); 
         });
     </script>

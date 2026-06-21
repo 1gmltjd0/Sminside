@@ -4,40 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>대구소프트웨어마이스터고 - Sminside</title>
-    <!-- 발표 설명: 대구 학교 페이지에 공통 스타일을 적용합니다. -->
     <link rel="stylesheet" href="style.css">
 </head>
-<!-- 발표 설명: data-school 속성으로 대구 학교 게시글만 구분해서 불러올 수 있습니다. -->
+<!-- 코드 설명: data-school 속성은 이 페이지가 대구 학교용임을 표시합니다. 나중에 JavaScript에서 학교별 게시글 필터에 사용할 수 있습니다. -->
 <body data-school="대구">
-    <!-- 발표 설명: 배경에 학교별 색감의 빛 효과를 넣습니다. -->
+    <!-- 코드 설명: nebula-container와 nebula n2 클래스는 대구 페이지의 배경 장식 효과를 만듭니다. -->
     <div class="nebula-container"><div class="nebula n2"></div></div>
+    <!-- 코드 설명: id="stars"는 별 배경을 생성하는 공통 함수가 찾는 요소입니다. -->
     <div class="stars-canvas" id="stars"></div>
 
-    <!-- 발표 설명: 메인 화면으로 돌아가기 위한 상단 메뉴입니다. -->
+    <!-- 코드 설명: navbar는 페이지 상단 이동 영역입니다. 사용자가 학교 페이지에서 메인 허브로 돌아갈 수 있게 합니다. -->
     <nav id="navbar">
         <div class="logo" onclick="location.href='index.html'">Sminside</div>
         <ul class="nav-links"><li><a href="index.html" style="text-decoration: none; color: inherit;">메인 허브로 돌아가기</a></li></ul>
     </nav>
 
     <div class="container">
-        <!-- 발표 설명: 대구 SW마이스터고 전용 커뮤니티 본문입니다. -->
+        <!-- 코드 설명: 이 section은 대구 SW마이스터고 커뮤니티 본문입니다. active 클래스로 현재 화면임을 표시합니다. -->
         <section class="active">
             <div style="text-align: center; margin-bottom: 4rem;">
                 <h1 style="font-size: 3rem; margin-bottom: 1rem; color: var(--accent-violet);">대구 SW마고 커뮤니티</h1>
                 <p style="color: var(--text-mid);">창의적이고 도전적인 대구소마고 학생들의 공간입니다.</p>
             </div>
             
-            <!-- 발표 설명: JavaScript가 게시글 목록을 여기에 표시합니다. -->
+            <!-- 코드 설명: 게시글 목록을 직접 HTML에 쓰지 않고, JavaScript가 데이터를 읽어 이 위치에 자동으로 넣게 만든 구조입니다. -->
             <div id="post-list" style="display: flex; flex-direction: column; gap: 1.5rem;"></div>
             
             <div style="margin-top: 4rem; text-align: center; display: flex; gap: 1.5rem; justify-content: center;">
+                    <!-- 코드 설명: inline style로 이 버튼만 보라색 강조색을 사용하게 했습니다. var(--accent-violet)은 CSS 변수에 저장된 색상입니다. -->
                 <button class="btn btn-primary" style="background: var(--accent-violet);" onclick="checkLoginForWrite()">+ 피드 작성</button>
                 <a href="https://dgsw.djsch.kr/" target="_blank" class="btn">공식 사이트 방문</a>
             </div>
         </section>
     </div>
 
-    <!-- 발표 설명: 게시글 상세 내용을 팝업으로 보여주는 모달입니다. -->
+    <!-- 코드 설명: 게시글 상세 내용을 보여주는 팝업 영역입니다. 모달을 공통 구조로 만들면 여러 학교 페이지에서 재사용할 수 있습니다. -->
     <div id="post-modal" class="modal" onclick="closeModal()">
         <div class="modal-content glass-card" onclick="event.stopPropagation()">
             <h2 id="modal-title"></h2>
@@ -48,7 +49,7 @@
         </div>
     </div>
 
-    <!-- 발표 설명: 공통 기능을 담은 JavaScript 파일을 연결합니다. -->
+    <!-- 코드 설명: 공통 JavaScript를 불러와 게시글 렌더링과 모달 기능을 사용할 수 있게 합니다. -->
     <script src="script.js"></script>
 </body>
 </html>

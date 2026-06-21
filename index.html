@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <!-- 발표 설명: UTF-8 문자 인코딩을 사용해 한글과 특수문자가 표시되도록 설정합니다. -->
+    <!-- 코드 설명: meta charset은 문서의 문자 인코딩을 정합니다. UTF-8을 사용하면 한글, 영어, 특수문자를 한 페이지에서 안정적으로 표시할 수 있습니다. -->
     <meta charset="UTF-8">
-    <!-- 발표 설명: 모바일과 PC 화면 크기에 맞게 페이지 폭을 자동 조절합니다. -->
+    <!-- 코드 설명: viewport는 모바일 화면에서 페이지가 너무 작게 보이지 않도록 브라우저의 표시 영역을 기기 너비에 맞춥니다. 반응형 웹을 만들 때 기본으로 넣는 코드입니다. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sminside - SW마이스터고 커뮤니티</title>
     <!-- 외부 스타일 시트 연결 -->
-    <!-- 발표 설명: 모든 페이지에서 공통으로 사용하는 디자인 파일(style.css)을 연결합니다. -->
+    <!-- 코드 설명: link 태그는 외부 CSS 파일을 HTML과 연결합니다. 여기서는 style.css에 있는 공통 배경색, 버튼, 카드 디자인을 이 페이지에 적용합니다. -->
     <link rel="stylesheet" href="style.css">
     <style>
         /* index.html 전용 스타일 */
-        /* 발표 설명: 첫 화면의 큰 소개 영역을 화면 중앙에 배치합니다. */
+        /* 코드 설명: .hero는 메인 첫 화면 영역입니다. display:flex와 justify-content/align-items를 사용해 제목, 설명, 버튼을 화면 중앙에 세로로 배치합니다. */
         .hero {
+            /* 코드 설명: 80vh는 브라우저 화면 높이의 80%를 사용한다는 뜻입니다. 첫 화면이 크게 보이도록 만드는 값입니다. */
             height: 80vh;
             display: flex;
             flex-direction: column;
@@ -21,10 +22,12 @@
             text-align: center;
         }
 
+        /* 코드 설명: .hero 안의 h1만 선택해서 메인 제목 크기와 그라데이션 글자 효과를 따로 지정합니다. */
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
             background: linear-gradient(to right, #fff, var(--accent-color));
+            /* 코드 설명: 배경 그라데이션을 글자 모양 안에만 보이게 잘라서, 제목 글자가 색이 변하는 것처럼 보이게 합니다. */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -35,19 +38,20 @@
             margin-bottom: 2rem;
         }
 
-        /* 발표 설명: 주요 기능 카드 3개를 반응형 그리드로 정렬합니다. */
+        /* 코드 설명: .features는 기능 카드 3개를 담는 부모입니다. grid를 사용해서 화면이 넓으면 여러 칸, 좁으면 한 칸으로 자동 정렬됩니다. */
         .features {
             display: grid;
+            /* 코드 설명: 카드 하나의 최소 너비는 300px로 두고, 남는 공간은 1fr로 똑같이 나눕니다. 그래서 PC와 모바일에서 카드 배열이 자연스럽게 바뀝니다. */
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-bottom: 4rem;
         }
 
-        /* 발표 설명: 최근 게시글 미리보기 영역의 위쪽 간격을 줍니다. */
         .recent-posts {
             margin-top: 4rem;
         }
 
+        /* 코드 설명: .post-item은 최근 게시글 한 줄입니다. display:flex로 글 제목은 왼쪽, 날짜는 오른쪽에 배치합니다. */
         .post-item {
             display: flex;
             justify-content: space-between;
@@ -69,8 +73,9 @@
 <body>
 
     <!-- 상단 메뉴 바 -->
-    <!-- 발표 설명: 사이트 상단 메뉴입니다. 로고와 각 페이지 이동 링크를 보여줍니다. -->
+    <!-- 코드 설명: nav 태그는 사이트의 주요 이동 메뉴를 의미합니다. 로고와 홈/학교소개/커뮤니티/로그인 링크를 넣어 다른 페이지로 이동하게 합니다. -->
     <nav>
+        <!-- 코드 설명: a 태그의 href는 클릭했을 때 이동할 파일 경로입니다. class="logo"는 CSS에서 로고처럼 보이게 꾸미기 위해 붙인 이름입니다. -->
         <a href="index.html" class="logo">Sminside</a>
         <ul class="nav-links">
             <li><a href="index.html">홈</a></li>
@@ -80,10 +85,10 @@
         </ul>
     </nav>
 
-    <!-- 발표 설명: 본문 전체를 감싸서 화면 가운데에 정렬하고 일정한 폭을 유지합니다. -->
+    <!-- 코드 설명: container 클래스는 본문을 한가운데 정렬하고 너무 넓게 퍼지지 않게 잡아주는 공통 레이아웃 박스입니다. -->
     <div class="container">
         <!-- 메인 히어로 섹션: 사이트의 첫 인상을 결정하는 곳 -->
-        <!-- 발표 설명: 방문자가 처음 보는 메인 소개 문구와 시작 버튼입니다. -->
+        <!-- 코드 설명: header는 페이지의 대표 소개 영역을 뜻합니다. 여기에 class="hero"를 붙여 위에서 만든 큰 중앙 정렬 스타일을 적용합니다. -->
         <header class="hero">
             <h1>전국 SW마이스터고의 중심</h1>
             <p>우리는 코드로 세상을 바꾸는 학생들의 공간입니다.</p>
@@ -91,8 +96,9 @@
         </header>
 
         <!-- 주요 기능 소개 카드 섹션 -->
-        <!-- 발표 설명: 학교 소개, 커뮤니티, 마이페이지 기능을 카드 형태로 안내합니다. -->
+        <!-- 코드 설명: section은 하나의 주제 묶음을 나타내는 태그입니다. 이 section은 사이트의 주요 기능 3가지를 카드로 보여주는 데 사용됩니다. -->
         <section class="features">
+            <!-- 코드 설명: glass-card 클래스는 반투명 카드 디자인을 적용하는 공통 클래스입니다. 기능 소개, 게시글 목록 같은 박스를 유리 느낌으로 보여줍니다. -->
             <div class="glass-card">
                 <h3>학교 소개</h3>
                 <p style="color: var(--text-sub); margin: 1rem 0;">전국의 4개 소프트웨어 마이스터고등학교 정보를 한눈에 확인하세요.</p>
@@ -111,7 +117,7 @@
         </section>
 
         <!-- 최근 게시글 미리보기: 사용자가 궁금해할 만한 최신 글들 -->
-        <!-- 발표 설명: 커뮤니티의 최신 글처럼 보이는 목록을 보여주는 영역입니다. -->
+        <!-- 코드 설명: class를 두 개 넣으면 두 스타일이 동시에 적용됩니다. recent-posts는 간격 담당, glass-card는 카드 디자인 담당입니다. -->
         <section class="recent-posts glass-card">
             <h2 style="margin-bottom: 1.5rem;">📌 최근 게시글</h2>
             <div class="post-list">
@@ -136,7 +142,7 @@
     </div>
 
     <!-- 하단 정보 영역 -->
-    <!-- 발표 설명: 페이지 하단 저작권 정보를 표시합니다. -->
+    <!-- 코드 설명: footer는 페이지 맨 아래 정보 영역입니다. 저작권이나 제작자 정보를 넣을 때 사용합니다. -->
     <footer>
         <p>&copy; 2026 Sminside. 제작자: 김예준 (대덕SW마고)</p>
     </footer>

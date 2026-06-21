@@ -4,42 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>광주소프트웨어마이스터고 - Sminside</title>
-    <!-- 발표 설명: 광주 학교 페이지에도 공통 CSS를 적용합니다. -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- 발표 설명: 배경의 시각 효과를 만드는 요소입니다. -->
+    <!-- 코드 설명: nebula n3 클래스를 사용해 광주 페이지의 배경 효과를 다른 학교 페이지와 구분합니다. -->
     <div class="nebula-container"><div class="nebula n3"></div></div>
+    <!-- 코드 설명: stars id는 공통 스크립트에서 별 배경을 생성할 때 사용하는 기준점입니다. -->
     <div class="stars-canvas" id="stars"></div>
 
-    <!-- 발표 설명: Sminside 메인으로 돌아갈 수 있는 메뉴입니다. -->
+    <!-- 코드 설명: 상단 메뉴입니다. 로고와 링크를 통해 메인 허브(index.html)로 돌아갈 수 있습니다. -->
     <nav id="navbar">
         <div class="logo" onclick="location.href='index.html'">Sminside</div>
         <ul class="nav-links"><li><a href="index.html" style="text-decoration: none; color: inherit;">메인 허브</a></li></ul>
     </nav>
 
     <div class="container">
-        <!-- 발표 설명: 광주 SW마이스터고 커뮤니티 내용을 보여주는 영역입니다. -->
+        <!-- 코드 설명: 광주 SW마이스터고 전용 커뮤니티 내용을 담는 section입니다. -->
         <section class="active">
             <div style="text-align: center; margin-bottom: 4rem;">
                 <h1 style="font-size: 3rem; margin-bottom: 1rem; color: var(--accent-emerald);">광주 SW마고 커뮤니티</h1>
                 <p style="color: var(--text-mid);">실무 중심의 교육으로 내일의 개발자를 꿈꾸는 학생들의 공간입니다.</p>
             </div>
             
-            <!-- 발표 설명: loadPosts 함수가 광주 학교 게시글을 넣어 주는 자리입니다. -->
+            <!-- 코드 설명: loadPosts 함수가 광주 학교 게시글을 카드 형태로 만들어 넣는 영역입니다. -->
             <div id="post-list" style="display: flex; flex-direction: column; gap: 1.5rem;"></div>
             
             <div style="margin-top: 3rem; text-align: center;">
+                <!-- 코드 설명: 글쓰기 버튼 클릭 시 로그인 여부를 확인하는 함수를 실행합니다. -->
                 <button class="btn btn-primary" style="background: var(--accent-emerald);" onclick="checkLoginForWrite()">글쓰기</button>
                 <a href="http://gsm.gen.hs.kr/" target="_blank" class="btn" style="margin-left: 1rem;">공식 홈페이지</a>
             </div>
         </section>
     </div>
+    <!-- 코드 설명: script.js를 먼저 불러와야 아래 inline script에서 loadPosts 함수를 사용할 수 있습니다. -->
     <script src="script.js"></script>
     <script>
-        // 발표 설명: HTML 구조가 준비되면 광주 학교 게시글을 불러오도록 예약합니다.
+        // 코드 설명: DOMContentLoaded는 HTML 태그 구조가 모두 준비되면 실행됩니다. 이미지 같은 리소스까지 기다리는 window.onload보다 빠릅니다.
         window.addEventListener('DOMContentLoaded', () => {
-            // 발표 설명: script.js 초기화가 끝난 뒤 게시글 목록을 불러오기 위해 짧게 기다립니다.
+            // 코드 설명: setTimeout으로 0.1초 뒤 loadPosts를 실행해 공통 스크립트 초기화가 끝난 뒤 게시글을 불러오게 했습니다.
             setTimeout(() => loadPosts('광주'), 100); 
         });
     </script>

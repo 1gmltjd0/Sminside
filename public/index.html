@@ -9,29 +9,31 @@
          디자인 시스템과 글래스모피즘 코어 엔진을 로드합니다. 
          발표 포인트: 변수를 활용한 중앙 집중식 색상 관리 (Root Variables)
     -->
-    <!-- 발표 설명: public 폴더의 메인 화면은 공통 CSS와 script.js로 디자인과 동작을 나눠 관리합니다. -->
+    <!-- 코드 설명: public/index.html은 한 파일 안에서 여러 화면을 바꿔 보여주는 메인 앱입니다. CSS는 디자인을, script.js는 화면 전환과 데이터 표시를 담당합니다. -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- [Visual Engine] 
          레이어링된 배경 엔진: z-index를 이용해 성운과 별빛을 분리 배치하여 깊이감 형성 
     -->
-    <!-- 발표 설명: 배경의 움직이는 빛 효과를 담당하는 장식 요소입니다. -->
+    <!-- 코드 설명: nebula-container는 배경의 흐릿한 빛 덩어리들을 담습니다. 실제 내용은 아니고 화면 분위기를 만드는 장식 요소입니다. -->
     <div class="nebula-container">
         <div class="nebula n1"></div>
         <div class="nebula n2"></div>
         <div class="nebula n3"></div>
     </div>
-    <!-- 발표 설명: JavaScript가 별 배경을 그려 넣을 위치입니다. -->
+    <!-- 코드 설명: id="stars"는 JavaScript에서 이 요소를 찾아 별 배경을 생성하기 위한 이름입니다. id는 한 페이지에서 특정 요소를 하나만 가리킬 때 사용합니다. -->
     <div class="stars-canvas" id="stars"></div>
 
     <!-- [Nav Engine] 
          내비게이션 시스템: id="navbar"를 통해 스크롤 상태에 따른 동적 클래스 토글링 수행 
     -->
-    <!-- 발표 설명: 클릭하면 showSection 함수가 실행되어 화면 섹션을 바꾸는 메뉴입니다. -->
+    <!-- 코드 설명: id="navbar"가 있는 nav는 상단 메뉴입니다. script.js에서 스크롤 상태에 따라 메뉴 스타일을 바꿀 수 있게 id를 붙였습니다. -->
     <nav id="navbar">
+        <!-- 코드 설명: onclick은 클릭했을 때 실행할 JavaScript를 적는 속성입니다. showSection('home')은 home 섹션만 화면에 보이게 바꾸는 함수 호출입니다. -->
         <div class="logo" onclick="showSection('home')">Sminside</div>
         <ul class="nav-links">
+            <!-- 코드 설명: li-home 같은 id는 메뉴 항목을 JavaScript로 찾아 active 클래스를 바꾸기 위해 사용합니다. active는 현재 선택된 메뉴를 뜻합니다. -->
             <li id="li-home" onclick="showSection('home')" class="active">홈</li>
             <li id="li-schools" onclick="showSection('schools')">학교</li>
             <li id="li-community" onclick="showSection('community')">통합피드</li>
@@ -46,13 +48,13 @@
         <!-- [Section: Home] 
              브랜드 아이덴티티를 전달하는 메인 랜딩 섹션
         -->
-        <!-- 발표 설명: 처음 보이는 홈 섹션이며 active 클래스가 붙어 화면에 표시됩니다. -->
+        <!-- 코드 설명: section마다 id를 붙여 JavaScript가 원하는 화면을 찾을 수 있게 했습니다. active 클래스가 붙은 section만 보이도록 CSS/JS가 제어합니다. -->
         <section id="home" class="active">
             <div style="text-align: center; padding: 120px 0;">
                 <h1 style="font-size: 4.5rem; margin-bottom: 1.5rem; font-weight: 900; letter-spacing: -3px;">Sminside.</h1>
                 <p style="color: var(--text-mid); margin-bottom: 3.5rem; font-size: 1.3rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.5;">SW마이스터고 우리들의 <br>진짜 이야기가 시작되는 곳</p>
                 <div style="display: flex; gap: 1.5rem; justify-content: center;">
-                    <!-- 발표 설명: 클릭하면 커뮤니티 섹션으로 이동합니다. -->
+                    <!-- 코드 설명: btn은 기본 버튼, btn-primary는 더 중요한 버튼 색상입니다. 클릭하면 community 섹션으로 전환됩니다. -->
                     <button class="btn btn-primary" onclick="showSection('community')">통합 피드 입장</button>
                     <button class="btn" onclick="showSection('schools')">학교별 공간 탐색</button>
                 </div>
@@ -62,13 +64,13 @@
         <!-- [Section: Schools] 
              각 학교별 전용 페이지로 라우팅되는 엔트리 포인트
         -->
-        <!-- 발표 설명: 학교 카드 목록을 보여주는 섹션입니다. 실제 카드는 script.js가 채웁니다. -->
+        <!-- 코드 설명: schools 섹션은 학교 목록 화면입니다. 처음에는 비어 있고 script.js의 loadSchools 함수가 카드 내용을 만들어 넣습니다. -->
         <section id="schools">
             <div style="text-align: center; margin-bottom: 4rem;">
                 <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">마이스터의 요람</h2>
                 <p style="color: var(--text-mid);">각 학교를 클릭하여 전용 커뮤니티에 입장하세요.</p>
             </div>
-            <!-- 발표 설명: loadSchools 함수가 학교 카드들을 동적으로 넣는 자리입니다. -->
+            <!-- 코드 설명: school-list라는 id는 JavaScript가 학교 카드들을 삽입할 정확한 위치입니다. company-grid 클래스는 카드들을 그리드로 배치합니다. -->
             <div id="school-list" class="company-grid">
                 <!-- script.js: loadSchools() 엔진이 카드를 동적으로 생성 및 주입 -->
             </div>
@@ -77,17 +79,17 @@
         <!-- [Section: Community] 
              전체 학교의 데이터를 통합하여 보여주는 Global 피드 시스템
         -->
-        <!-- 발표 설명: 전체 학교의 게시글을 한곳에 모아 보여주는 섹션입니다. -->
+        <!-- 코드 설명: community 섹션은 게시글 피드 화면입니다. 여러 학교의 글을 한 곳에서 볼 수 있게 만든 영역입니다. -->
         <section id="community">
             <div style="margin-bottom: 3rem; display: flex; justify-content: space-between; align-items: flex-end;">
                 <div>
                     <h2 style="font-size: 2rem;">통합 피드</h2>
                     <p style="color: var(--text-mid);">전국 4개 소마고 학생들의 실시간 소통 공간</p>
                 </div>
-                <!-- 발표 설명: 로그인 여부를 확인한 뒤 글쓰기 화면으로 이동시키는 버튼입니다. -->
+                <!-- 코드 설명: checkLoginForWrite 함수는 글쓰기 전에 로그인 상태를 확인하는 역할입니다. 로그인이 안 되어 있으면 로그인 화면으로 보내는 식으로 사용할 수 있습니다. -->
                 <button class="btn btn-primary" onclick="checkLoginForWrite()">+ 피드 작성하기</button>
             </div>
-            <!-- 발표 설명: loadPosts 함수가 게시글 목록을 동적으로 넣는 영역입니다. -->
+            <!-- 코드 설명: post-list는 게시글 카드들이 들어가는 빈 컨테이너입니다. loadPosts 함수가 서버나 데이터 배열에서 글을 가져와 이곳에 표시합니다. -->
             <div id="post-list" style="display: flex; flex-direction: column; gap: 1.5rem;">
                 <!-- script.js: loadPosts() 엔진이 게시글 렌더링 수행 -->
             </div>
@@ -96,12 +98,13 @@
         <!-- [Section: Companies] 
              기업 데이터베이스 연동 및 커리어 지원 라우팅 섹션
         -->
-        <!-- 발표 설명: 학생과 기업을 연결하는 기업 매칭 섹션입니다. -->
+        <!-- 코드 설명: companies 섹션은 기업 정보를 보여주는 화면입니다. 학생과 기업 매칭 기능을 표현하기 위해 만든 페이지입니다. -->
         <section id="companies">
             <div style="text-align: center; margin-bottom: 4rem;">
                 <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">커리어 매칭</h2>
                 <p style="color: var(--text-mid);">검증된 학생들과 유망한 기업의 만남</p>
             </div>
+            <!-- 코드 설명: company-list id는 기업 카드가 들어갈 자리입니다. JavaScript에서 이 id를 찾아 기업 데이터를 화면에 추가합니다. -->
             <div class="company-grid" id="company-list">
                 <!-- script.js: loadCompanies() 엔진이 기업 정보 카드 생성 -->
             </div>
@@ -111,13 +114,15 @@
              보안 로직이 적용된 DM(Direct Message) 시스템 
              비로그인 시 .lock-overlay 노출, 로그인 시 #message-ui 노출
         -->
-        <!-- 발표 설명: 로그인 상태에 따라 잠금 화면 또는 메시지 UI를 보여주는 섹션입니다. -->
+        <!-- 코드 설명: messages 섹션은 개인 메시지 화면입니다. message-lock과 message-ui 두 상태를 만들어 로그인 여부에 따라 다른 화면을 보여줍니다. -->
         <section id="messages">
             <h2 style="margin-bottom: 2rem;">다이렉트 메시지</h2>
+            <!-- 코드 설명: message-lock은 비로그인 상태에서 보이는 잠금 안내 카드입니다. 로그인 전에는 메시지를 볼 수 없다는 흐름을 표현합니다. -->
             <div id="message-lock" class="glass-card lock-overlay">
                 <p style="margin-bottom: 2rem; color: var(--text-mid);">개인정보 보호를 위해 메시지 기능은 로그인 후 이용 가능합니다.</p>
                 <button class="btn btn-primary" onclick="showSection('login')">로그인 화면으로 이동</button>
             </div>
+            <!-- 코드 설명: message-ui는 로그인 후 보이는 실제 채팅 화면입니다. 처음에는 display:none으로 숨겨져 있다가 JavaScript로 표시할 수 있습니다. -->
             <div id="message-ui" class="glass-card" style="padding: 0; overflow: hidden; display: none; height: 550px;">
                 <div style="width: 30%; border-right: 1px solid var(--glass-border); padding: 1rem;" id="chat-list">
                     <div class="post-row-hover" style="padding: 1rem; border-radius: 12px; background: rgba(255,255,255,0.05);">
@@ -128,6 +133,7 @@
                 <div style="width: 70%; display: flex; flex-direction: column;">
                     <div id="message-container" style="flex: 1; padding: 2rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem;"></div>
                     <div style="padding: 1.5rem; border-top: 1px solid var(--glass-border); display: flex; gap: 1rem;">
+                        <!-- 코드 설명: msg-input id는 사용자가 쓴 메시지 값을 JavaScript에서 읽기 위한 이름입니다. sendMessage 함수가 이 input 값을 가져갑니다. -->
                         <input type="text" id="msg-input" placeholder="메시지를 입력하세요...">
                         <button class="btn btn-primary" onclick="sendMessage()" style="padding: 0 1.5rem;">전송</button>
                     </div>
@@ -138,18 +144,21 @@
         <!-- [Section: Write] 
              게시글 생성 인터페이스: Server Side API로 POST 요청을 보냄
         -->
-        <!-- 발표 설명: 새 게시글을 작성하는 입력 폼 섹션입니다. -->
+        <!-- 코드 설명: write 섹션은 새 게시글 작성 화면입니다. 제목 input과 내용 textarea 값을 submitPost 함수가 읽어서 글을 등록합니다. -->
         <section id="write">
             <div style="max-width: 850px; margin: 0 auto;">
                 <h2 style="margin-bottom: 2rem;">새로운 피드 작성</h2>
                 <div class="glass-card">
                     <div style="margin-bottom: 1.5rem;">
+                        <!-- 코드 설명: post-title id는 게시글 제목 입력값을 JavaScript에서 가져오기 위해 붙였습니다. -->
                         <input type="text" id="post-title" placeholder="매력적인 제목을 입력하세요">
                     </div>
                     <div style="margin-bottom: 2rem;">
+                        <!-- 코드 설명: post-content id는 게시글 본문 입력값을 JavaScript에서 가져오기 위해 붙였습니다. -->
                         <textarea id="post-content" placeholder="무슨 생각을 하고 계신가요? 코드로 세상을 바꾸는 이야기를 들려주세요." style="height: 300px; resize: none;"></textarea>
                     </div>
                     <div style="display: flex; gap: 1rem;">
+                        <!-- 코드 설명: submitPost 함수는 글쓰기 버튼을 눌렀을 때 제목과 내용을 확인하고 게시글 목록에 추가하는 역할입니다. -->
                         <button class="btn btn-primary" style="flex: 1;" onclick="submitPost()">피드 발행하기</button>
                         <button class="btn" style="flex: 1;" onclick="showSection('community')">취소</button>
                     </div>
@@ -160,17 +169,19 @@
         <!-- [Section: Login] 
              시스템 보안 인증 게이트웨이
         -->
-        <!-- 발표 설명: 테스트 계정으로 로그인하는 입력 화면입니다. -->
+        <!-- 코드 설명: login 섹션은 로그인 입력 화면입니다. login-id와 login-pw 값을 handleLogin 함수가 확인합니다. -->
         <section id="login">
             <div style="max-width: 420px; margin: 100px auto;" class="glass-card">
                 <h2 style="margin-bottom: 1rem; text-align: center; font-size: 2.5rem; font-weight: 900;">Sminside</h2>
                 <p style="text-align: center; color: var(--text-low); margin-bottom: 2.5rem;">소마고 학생 인증을 위해 로그인해 주세요.</p>
                 <div style="margin-bottom: 1rem;">
+                    <!-- 코드 설명: login-id는 아이디 입력창입니다. id가 있어야 JavaScript에서 document.getElementById('login-id')로 값을 읽을 수 있습니다. -->
                     <input type="text" id="login-id" placeholder="학번 또는 아이디">
                 </div>
                 <div style="margin-bottom: 2rem;">
                     <input type="password" id="login-pw" placeholder="비밀번호">
                 </div>
+                <!-- 코드 설명: handleLogin 함수는 로그인 버튼 클릭 시 아이디와 비밀번호를 확인하고 로그인 상태로 화면을 바꾸는 역할입니다. -->
                 <button class="btn btn-primary" style="width: 100%;" onclick="handleLogin()">로그인</button>
                 <div style="text-align: center; margin-top: 1.5rem; font-size: 0.8rem; color: var(--text-low);">
                     계정이 없으신가요? <u>회원가입</u> | 테스트용 계정: admin / 1234
@@ -181,7 +192,7 @@
         <!-- [Section: MyPage] 
              개인화된 사용자 프로필 및 활동 대시보드
         -->
-        <!-- 발표 설명: 로그인한 사용자의 프로필과 활동 정보를 보여주는 섹션입니다. -->
+        <!-- 코드 설명: mypage 섹션은 로그인한 사용자 정보를 보여주는 화면입니다. user-name, user-bio 같은 id에 JavaScript가 사용자 데이터를 넣습니다. -->
         <section id="mypage">
             <div style="max-width: 700px; margin: 0 auto;">
                 <div class="glass-card" style="text-align: center;">
@@ -201,12 +212,12 @@
     <!-- [AI Engine: 스민봇] 
          부동 소수점 모션이 적용된 AI 인터페이스 
     -->
-    <!-- 발표 설명: 오른쪽 아래의 AI 채팅 버튼이며 클릭하면 채팅창을 열고 닫습니다. -->
+    <!-- 코드 설명: ai-chat-btn은 화면 오른쪽 아래에 고정된 AI 채팅 열기 버튼입니다. position:fixed라 스크롤해도 같은 위치에 남습니다. -->
     <div id="ai-chat-btn" onclick="toggleAIChat()" style="position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; background: linear-gradient(135deg, var(--accent-indigo), var(--accent-violet)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; cursor: pointer; box-shadow: 0 15px 35px rgba(0,0,0,0.6); z-index: 9999;">
         🤖
     </div>
 
-    <!-- 발표 설명: AI 질문과 답변이 표시되는 채팅 모달 창입니다. -->
+    <!-- 코드 설명: ai-modal은 AI 채팅창 전체입니다. display:none으로 숨겼다가 toggleAIChat 함수가 flex로 바꿔 보여줍니다. -->
     <div id="ai-modal" class="glass-card" style="position: fixed; bottom: 110px; right: 30px; width: 380px; height: 550px; z-index: 9999; display: none; flex-direction: column; padding: 0; overflow: hidden; border-radius: 32px;">
         <div style="padding: 1.5rem 2rem; background: rgba(255,255,255,0.05); border-bottom: 1px solid var(--glass-border); display: flex; justify-content: space-between; align-items: center;">
             <b style="color: var(--accent-indigo); font-size: 1.1rem;">Sminside AI Assistant</b>
@@ -218,6 +229,7 @@
             </div>
         </div>
         <div style="padding: 1.5rem; border-top: 1px solid var(--glass-border); display: flex; gap: 0.8rem;">
+            <!-- 코드 설명: ai-input은 AI에게 보낼 질문을 입력하는 칸입니다. sendAIQuestion 함수가 이 값을 읽습니다. -->
             <input type="text" id="ai-input" placeholder="질문을 입력하세요..." style="background: rgba(0,0,0,0.2); font-size: 0.95rem;">
             <button class="btn btn-primary" onclick="sendAIQuestion()" style="padding: 0 1.2rem;">전송</button>
         </div>
@@ -226,8 +238,9 @@
     <!-- [Modal: Post Detail] 
          게시글 상세 조회용 모달 
     -->
-    <!-- 발표 설명: 게시글을 클릭했을 때 자세한 내용을 보여주는 팝업 모달입니다. -->
+    <!-- 코드 설명: post-modal은 게시글 상세보기 팝업입니다. modal-title, modal-meta, modal-content id에 선택한 글 정보를 넣어 보여줍니다. -->
     <div id="post-modal" class="modal" onclick="closeModal()">
+        <!-- 코드 설명: stopPropagation은 팝업 안쪽을 클릭했을 때 바깥 modal 클릭 이벤트까지 전달되지 않게 막습니다. 그래서 내용 클릭만으로 창이 닫히지 않습니다. -->
         <div class="modal-content glass-card" onclick="event.stopPropagation()">
             <h2 id="modal-title" style="font-size: 2rem;"></h2>
             <div id="modal-meta" style="color: var(--text-mid); font-size: 0.9rem; margin: 1.2rem 0;"></div>
@@ -242,7 +255,7 @@
     <!-- [Engine: JS] 
          전체 시스템의 비즈니스 로직을 제어하는 메인 컨트롤러 
     -->
-    <!-- 발표 설명: 섹션 전환, 게시글 표시, 로그인 등 실제 동작을 담당하는 JavaScript 파일을 불러옵니다. -->
+    <!-- 코드 설명: script 태그는 JavaScript 파일을 불러옵니다. 이 파일 안에 showSection, loadPosts, handleLogin 같은 동작 함수들이 들어 있습니다. -->
     <script src="script.js"></script>
 </body>
 </html>

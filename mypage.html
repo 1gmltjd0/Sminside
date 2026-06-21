@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이페이지 - Sminside</title>
-    <!-- 발표 설명: 마이페이지에 공통 디자인을 적용합니다. -->
+    <!-- 코드 설명: 마이페이지도 공통 CSS를 연결해 같은 테마의 카드와 버튼을 사용합니다. -->
     <link rel="stylesheet" href="style.css">
     <style>
-        /* 발표 설명: 프로필 이미지와 사용자 정보를 가로로 배치합니다. */
+        /* 코드 설명: .profile-section은 프로필 이미지와 사용자 설명을 가로로 배치합니다. gap으로 두 요소 사이 간격을 만듭니다. */
         .profile-section {
             display: flex;
             align-items: center;
@@ -15,11 +15,12 @@
             margin-bottom: 3rem;
         }
 
-        /* 발표 설명: 원형 프로필 이미지를 만들고 가운데에 아이콘을 배치합니다. */
+        /* 코드 설명: .profile-img는 실제 이미지 파일 대신 원형 배경과 이모지/문자를 사용해 프로필 아이콘처럼 보이게 만든 박스입니다. */
         .profile-img {
             width: 120px;
             height: 120px;
             background: linear-gradient(135deg, var(--accent-color), #a855f7);
+            /* 코드 설명: border-radius:50%는 정사각형 요소를 원 모양으로 만듭니다. 프로필 사진이나 아이콘에 자주 쓰입니다. */
             border-radius: 50%;
             display: flex;
             justify-content: center;
@@ -37,7 +38,7 @@
             margin-bottom: 1rem;
         }
 
-        /* 발표 설명: 작성 글 수와 댓글 수 같은 통계를 2칸 그리드로 보여줍니다. */
+        /* 코드 설명: .stats-grid는 활동 통계 카드를 2칸으로 배치합니다. repeat(2, 1fr)은 같은 너비의 열 2개를 만든다는 뜻입니다. */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -50,6 +51,7 @@
             padding: 1.5rem;
         }
 
+        /* 코드 설명: .stat-value는 숫자 부분입니다. font-size와 font-weight를 크게 줘서 통계 숫자가 먼저 눈에 들어오게 합니다. */
         .stat-value {
             font-size: 2rem;
             font-weight: 800;
@@ -62,13 +64,14 @@
             color: var(--text-sub);
         }
 
+        /* 코드 설명: .my-posts-header는 내가 쓴 게시글 제목 영역입니다. 왼쪽 border를 강조선처럼 사용해 섹션 구분을 줍니다. */
         .my-posts-header {
             margin-bottom: 1.5rem;
             border-left: 4px solid var(--accent-color);
             padding-left: 1rem;
         }
 
-        /* 발표 설명: 내가 쓴 글 목록을 클릭 가능한 카드처럼 보이게 만듭니다. */
+        /* 코드 설명: .post-link는 내가 쓴 글 하나를 나타내는 링크 카드입니다. display:block으로 카드 전체가 클릭 영역이 됩니다. */
         .post-link {
             display: block;
             padding: 1.2rem;
@@ -81,6 +84,7 @@
             transition: 0.3s;
         }
 
+        /* 코드 설명: hover 상태에서 배경을 바꾸고 오른쪽으로 살짝 움직여 사용자가 마우스를 올린 항목을 알 수 있게 합니다. */
         .post-link:hover {
             background: var(--card-hover);
             transform: translateX(10px);
@@ -89,7 +93,6 @@
 </head>
 <body>
 
-    <!-- 발표 설명: 현재 마이페이지 메뉴를 강조한 상단 내비게이션입니다. -->
     <nav>
         <a href="index.html" class="logo">Sminside</a>
         <ul class="nav-links">
@@ -102,18 +105,20 @@
 
     <div class="container">
         <!-- 프로필 섹션: 사용자의 기본 정보를 보여줌 -->
-        <!-- 발표 설명: 사용자 이름, 학교, 자기소개가 들어가는 프로필 영역입니다. -->
+        <!-- 코드 설명: header에 glass-card와 profile-section을 같이 넣어, 카드 디자인과 프로필 가로 배치를 동시에 적용했습니다. -->
         <header class="glass-card profile-section">
+            <!-- 코드 설명: 이 div는 사용자 사진 자리입니다. 실제 이미지가 없어도 원형 아이콘으로 프로필 영역을 구성할 수 있습니다. -->
             <div class="profile-img">👤</div>
             <div class="profile-info">
                 <h2>김예준 <span style="font-size: 1rem; color: var(--text-sub); font-weight: 400;">(대덕SW마고)</span></h2>
                 <p>안녕하세요! 백엔드 개발자를 꿈꾸는 1학년 김예준입니다. 열심히 공부 중이에요!</p>
+                <!-- 코드 설명: 정보 수정 버튼입니다. class="btn"으로 공통 버튼 모양을 적용했지만, 실제 수정 기능은 아직 연결하지 않았습니다. -->
                 <button class="btn" style="padding: 0.5rem 1rem; font-size: 0.85rem;">정보 수정</button>
             </div>
         </header>
 
         <!-- 활동 통계: 내가 쓴 글과 댓글 수를 시각적으로 보여줌 -->
-        <!-- 발표 설명: 사용자의 활동 수치를 짧게 요약해서 보여줍니다. -->
+        <!-- 코드 설명: 사용자의 작성 글 수와 댓글 수를 작은 카드 두 개로 보여주는 통계 영역입니다. -->
         <div class="stats-grid">
             <div class="glass-card stat-card">
                 <div class="stat-value">12</div>
@@ -126,12 +131,12 @@
         </div>
 
         <!-- 내가 쓴 게시글 목록: 클릭하면 해당 글로 이동할 수 있게 함 -->
-        <!-- 발표 설명: 사용자가 작성한 게시글 목록을 보여주는 영역입니다. -->
         <section>
             <div class="my-posts-header">
                 <h3>내가 쓴 게시글</h3>
             </div>
             
+            <!-- 코드 설명: href="#"는 아직 실제 이동할 게시글 주소가 없을 때 임시로 사용하는 링크입니다. class="post-link"로 카드처럼 꾸밉니다. -->
             <a href="#" class="post-link">
                 <div style="font-size: 0.8rem; color: var(--accent-color); margin-bottom: 0.5rem;">자유 게시판</div>
                 <div style="font-weight: 600;">안녕하세요 대덕입니다! 반가워요</div>

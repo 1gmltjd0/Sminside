@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>커뮤니티 - Sminside</title>
-    <!-- 발표 설명: 공통 스타일시트를 불러와 전체 디자인을 통일합니다. -->
+    <!-- 코드 설명: 커뮤니티 페이지도 공통 CSS를 불러와서 다른 페이지와 같은 색상, 버튼, 카드 스타일을 사용합니다. -->
     <link rel="stylesheet" href="style.css">
     <style>
-        /* 발표 설명: 게시판 제목과 글쓰기 버튼을 양쪽 끝에 배치합니다. */
+        /* 코드 설명: .community-header는 게시판 제목과 글쓰기 버튼을 담습니다. flex를 사용해 제목은 왼쪽, 버튼은 오른쪽에 놓습니다. */
         .community-header {
             display: flex;
             justify-content: space-between;
@@ -16,7 +16,7 @@
         }
 
         /* 카테고리 필터 스타일 */
-        /* 발표 설명: 글을 주제별로 나눠 볼 수 있는 카테고리 버튼 줄입니다. */
+        /* 코드 설명: .category-tabs는 카테고리 버튼들을 가로로 배치하는 부모입니다. overflow-x:auto라 화면이 좁으면 옆으로 스크롤할 수 있습니다. */
         .category-tabs {
             display: flex;
             gap: 1rem;
@@ -25,6 +25,7 @@
             padding-bottom: 0.5rem;
         }
 
+        /* 코드 설명: .category-tab은 각각의 카테고리 버튼입니다. padding, border, border-radius로 버튼처럼 보이게 만듭니다. */
         .category-tab {
             padding: 0.5rem 1rem;
             background: var(--glass-bg);
@@ -36,6 +37,7 @@
             transition: 0.3s;
         }
 
+        /* 코드 설명: active 클래스가 붙은 카테고리는 현재 선택된 상태를 뜻합니다. 배경색과 테두리색을 바꿔 사용자가 현재 탭을 알아보게 합니다. */
         .category-tab.active {
             background: rgba(99, 102, 241, 0.2);
             color: var(--accent-color);
@@ -43,12 +45,13 @@
         }
 
         /* 게시판 테이블 스타일 */
-        /* 발표 설명: 게시글 목록을 표 형태로 정리해 보여줍니다. */
+        /* 코드 설명: .board-table은 게시글 목록 표 전체입니다. width:100%로 부모 너비를 전부 쓰고 border-collapse로 표 선이 겹치지 않게 정리합니다. */
         .board-table {
             width: 100%;
             border-collapse: collapse;
         }
 
+        /* 코드 설명: th는 표 제목 칸, td는 실제 데이터 칸입니다. 두 칸 모두 같은 padding과 아래쪽 선을 줘 행 간격을 일정하게 만듭니다. */
         .board-table th, .board-table td {
             padding: 1.2rem;
             text-align: left;
@@ -65,23 +68,26 @@
             transition: 0.2s;
         }
 
+        /* 코드 설명: tr:hover는 마우스를 게시글 행 위에 올렸을 때만 적용됩니다. 배경을 살짝 바꿔 클릭 가능한 목록처럼 느껴지게 합니다. */
         .board-table tr:hover {
             background: rgba(255, 255, 255, 0.03);
         }
 
         /* 뱃지 스타일: 너무 튀지 않는 색상 사용 */
-        /* 발표 설명: 글 종류를 한눈에 구분하도록 작은 색상 라벨을 만듭니다. */
+        /* 코드 설명: .badge는 글 종류를 표시하는 작은 라벨입니다. 예를 들어 자유, 질문, 정보 같은 분류를 제목 앞에 붙일 때 사용합니다. */
         .badge {
             padding: 0.2rem 0.5rem;
             border-radius: 4px;
             font-size: 0.75rem;
             margin-right: 0.5rem;
         }
+        /* 코드 설명: .badge-free처럼 세부 클래스를 추가하면 같은 badge 모양을 유지하면서 분류마다 색만 다르게 줄 수 있습니다. */
         .badge-free { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
         .badge-qa { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
         .badge-info { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
         .badge-school { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
 
+        /* 코드 설명: .post-title은 게시글 제목 링크입니다. a 태그 기본 밑줄을 없애고, badge와 제목을 한 줄에 맞추기 위해 flex를 사용합니다. */
         .post-title {
             color: var(--text-main);
             text-decoration: none;
@@ -96,7 +102,7 @@
 </head>
 <body>
 
-    <!-- 발표 설명: 페이지 이동을 위한 상단 메뉴이며, 현재 커뮤니티 메뉴가 강조됩니다. -->
+    <!-- 코드 설명: nav는 상단 이동 메뉴입니다. 현재 페이지인 커뮤니티 링크에는 accent 색을 직접 줘서 선택된 메뉴처럼 보이게 했습니다. -->
     <nav>
         <a href="index.html" class="logo">Sminside</a>
         <ul class="nav-links">
@@ -108,14 +114,15 @@
     </nav>
 
     <div class="container">
-        <!-- 발표 설명: 커뮤니티 제목과 글쓰기 페이지로 이동하는 버튼을 담습니다. -->
+        <!-- 코드 설명: 이 div는 제목 h1과 글쓰기 버튼 a 태그를 한 줄에 배치하기 위한 묶음입니다. -->
         <div class="community-header">
             <h1>커뮤니티 게시판</h1>
+            <!-- 코드 설명: href="write.html"은 버튼을 누르면 글쓰기 HTML 파일로 이동한다는 뜻입니다. class="btn"으로 공통 버튼 디자인을 적용합니다. -->
             <a href="write.html" class="btn">글쓰기</a>
         </div>
 
         <!-- 카테고리 탭: 주제별로 글을 나눠서 볼 수 있게 함 -->
-        <!-- 발표 설명: 전체, 자유, 질문 등 게시글 분류를 선택하는 영역입니다. -->
+        <!-- 코드 설명: 이 영역은 실제 필터 기능까지 연결되지는 않았지만, 게시글을 종류별로 볼 수 있게 만들 계획을 보여주는 UI입니다. -->
         <div class="category-tabs">
             <div class="category-tab active">전체</div>
             <div class="category-tab">자유</div>
@@ -126,8 +133,9 @@
 
         <!-- 게시판 목록: 테이블 태그를 사용해서 깔끔하게 정렬함 -->
         <div class="glass-card" style="padding: 0;">
-            <!-- 발표 설명: 게시글 번호, 제목, 작성자, 학교, 날짜, 조회수를 표로 보여줍니다. -->
+            <!-- 코드 설명: table은 행과 열이 있는 데이터를 보여줄 때 쓰는 태그입니다. 게시판처럼 번호, 제목, 작성자, 날짜를 정렬해서 보여주기에 적합합니다. -->
             <table class="board-table">
+                <!-- 코드 설명: thead는 표의 제목 줄입니다. 각 열이 어떤 정보를 의미하는지 알려줍니다. -->
                 <thead>
                     <tr>
                         <th style="width: 80px;">번호</th>
@@ -138,12 +146,13 @@
                         <th style="width: 80px;">조회수</th>
                     </tr>
                 </thead>
-                <!-- 발표 설명: 실제 게시글 데이터가 들어가는 표의 본문 부분입니다. -->
+                <!-- 코드 설명: tbody는 실제 게시글 데이터가 들어가는 부분입니다. tr 하나가 게시글 한 개를 의미합니다. -->
                 <tbody>
                     <tr>
                         <td>12</td>
                         <td>
                             <a href="post.html" class="post-title">
+                                <!-- 코드 설명: span은 짧은 텍스트를 감쌀 때 사용합니다. badge와 badge-free 두 클래스를 같이 써서 기본 라벨 모양과 자유글 색상을 동시에 적용합니다. -->
                                 <span class="badge badge-free">자유</span>
                                 안녕하세요 대덕입니다! 반가워요
                             </a>
@@ -197,7 +206,6 @@
         </div>
     </div>
 
-    <!-- 발표 설명: 사이트 제작 정보가 들어가는 하단 영역입니다. -->
     <footer>
         <p>&copy; 2026 Sminside. 제작자: 김예준 (대덕SW마고)</p>
     </footer>
